@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://chrncrkuahi4v"]
+[gd_scene load_steps=31 format=4 uid="uid://chrncrkuahi4v"]
 
 [ext_resource type="Texture2D" uid="uid://dn126jxxhd1aw" path="res://Assets/Meshes/Structures/Rooms/textures/77_albedo.png" id="1_nv07c"]
 [ext_resource type="Texture2D" uid="uid://d2vqa7wihrepc" path="res://Assets/Meshes/Structures/Rooms/textures/77_albedo2.png" id="2_tatab"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://ctton61qjx83f" path="res://Assets/Meshes/Structures/Rooms/textures/77_albedo4.png" id="4_1diyr"]
 [ext_resource type="Texture2D" uid="uid://dkeqpttotbn4x" path="res://Assets/Meshes/Structures/Rooms/textures/112_albedo.png" id="5_sh1w2"]
 [ext_resource type="Texture2D" uid="uid://cwosntklg70w4" path="res://Assets/Meshes/Structures/Rooms/textures/112_albedo2.png" id="6_46cy5"]
+[ext_resource type="Script" path="res://Scripts/CustomClasses/FiniteStateMachine/finite_state_machine.gd" id="7_hc3tr"]
+[ext_resource type="Script" path="res://Scenes/PlayerRelated/PlayerOWidle.gd" id="8_tw0xr"]
+[ext_resource type="Script" path="res://Scenes/PlayerRelated/room_choosing.gd" id="9_ici1x"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q1a0g"]
 resource_name = "73"
@@ -244,13 +247,18 @@ shadow_mesh = SubResource("ArrayMesh_d2j0u")
 [sub_resource type="BoxShape3D" id="BoxShape3D_yedrq"]
 size = Vector3(1.08203, 0.981567, 1.11566)
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_1a0gj"]
+size = Vector2(32, 32)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1waei"]
+
 [node name="regular_room" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.66442, -2.98023e-08, 0.521085)
 
 [node name="Walls" type="Node3D" parent="."]
 
 [node name="wall1" type="MeshInstance3D" parent="Walls"]
-transform = Transform3D(1.016, 0, 0, 0, 0.907002, 0, 0, 0, 0.001, -1.19209e-07, -6.10352e-08, 0.0752981)
+transform = Transform3D(1.016, 0, 0, 0, 0.907002, 0, 0, 0, 0.001, 0, 0, 0.076)
 mesh = SubResource("ArrayMesh_h4w52")
 skeleton = NodePath("")
 
@@ -260,7 +268,7 @@ mesh = SubResource("ArrayMesh_lj66m")
 skeleton = NodePath("")
 
 [node name="wall3" type="MeshInstance3D" parent="Walls"]
-transform = Transform3D(-1.21117e-07, 0, 0.001, 0, 0.907002, 0, -1.016, 0, -1.19209e-10, 0.509909, -6.10352e-08, 0.58497)
+transform = Transform3D(-1.21117e-07, 0, 0.001, 0, 0.907002, 0, -1.016, 0, -1.19209e-10, 0.508, 0, 0.585)
 mesh = SubResource("ArrayMesh_fhkk2")
 skeleton = NodePath("")
 
@@ -279,7 +287,7 @@ skeleton = NodePath("")
 [node name="Roof" type="Node3D" parent="."]
 
 [node name="Roof" type="MeshInstance3D" parent="Roof"]
-transform = Transform3D(1.03064, 0, 0, 0, 3.64942e-07, 0.001, 0, -1.02045, 3.57628e-10, 0.00961059, 0.4612, 0.581403)
+transform = Transform3D(1.03064, 0, 0, 0, 3.64942e-07, 0.001, 0, -1.02045, 3.57628e-10, 0.01, 0.45, 0.581)
 mesh = SubResource("ArrayMesh_s61kh")
 skeleton = NodePath("")
 
@@ -288,3 +296,30 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00450242, -0.00921631, 0.602427)
 shape = SubResource("BoxShape3D_yedrq")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.25, -4.37115e-08, 1.91069e-15, 0, -1.09278e-08, -0.25, 4.37115e-08, 0.25, -1.09278e-08, -0.0397527, -0.398268, 0.621513)
+texture = SubResource("PlaceholderTexture2D_1a0gj")
+
+[node name="PlayerCamera" type="Camera3D" parent="Sprite3D"]
+transform = Transform3D(4, 0, 0, 0, -1.74846e-07, 4, 0, -4, -1.74846e-07, 0, 0, -1.4)
+current = true
+fov = 100.0
+
+[node name="PlayerBody" type="CharacterBody3D" parent="Sprite3D"]
+transform = Transform3D(0.25, 0, 0, 0, -1.09278e-08, 0.25, 0, -0.25, -1.09278e-08, 0, 0, 0)
+
+[node name="PlayerShape" type="CollisionShape3D" parent="Sprite3D/PlayerBody"]
+shape = SubResource("CapsuleShape3D_1waei")
+
+[node name="FiniteStateMachine" type="Node" parent="Sprite3D" node_paths=PackedStringArray("initial_state")]
+script = ExtResource("7_hc3tr")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="Sprite3D/FiniteStateMachine" node_paths=PackedStringArray("state_owner")]
+script = ExtResource("8_tw0xr")
+state_owner = NodePath("../..")
+
+[node name="Choosing" type="Node" parent="Sprite3D/FiniteStateMachine" node_paths=PackedStringArray("state_owner")]
+script = ExtResource("9_ici1x")
+state_owner = NodePath("../..")

@@ -1,0 +1,7 @@
+#Twilight's Messiah V 0.10 TODO list.
+
+#Continue with the player state machine
+# Draw a map of the fortress 
+# Make up a floor scene and fill it with the appropiate rooms
+# Make up a function to move from one room to the other
+# Create variants for the regular rooms (Rooms with 3 and 2 doors)

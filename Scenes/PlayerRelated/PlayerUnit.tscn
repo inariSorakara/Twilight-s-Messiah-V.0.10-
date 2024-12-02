@@ -1,9 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://k47uqnsfqaq"]
+[gd_scene load_steps=5 format=3 uid="uid://k47uqnsfqaq"]
+
+[ext_resource type="Script" path="res://Scripts/CustomClasses/FiniteStateMachine/finite_state_machine.gd" id="1_d2hjn"]
+[ext_resource type="Script" path="res://Scenes/PlayerRelated/PlayerOWidle.gd" id="2_n1253"]
+[ext_resource type="Script" path="res://Scenes/PlayerRelated/room_choosing.gd" id="3_24bjv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1waei"]
 
 [node name="PlayerUnit" type="Node3D"]
-transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 0.2, 0, 1)
+transform = Transform3D(0.5, 0, -8.7423e-08, 0, 0.5, 0, 8.7423e-08, 0, 0.5, 0, 0, 0)
 
 [node name="PlayerBody" type="CharacterBody3D" parent="."]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
@@ -12,5 +16,16 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_1waei")
 
 [node name="PlayerCamera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1)
 current = true
+
+[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("1_d2hjn")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("state_owner")]
+script = ExtResource("2_n1253")
+state_owner = NodePath("../..")
+
+[node name="Choosing" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("state_owner")]
+script = ExtResource("3_24bjv")
+state_owner = NodePath("../..")
