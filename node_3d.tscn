@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://b04edcnygc5it"]
-
-[ext_resource type="PackedScene" uid="uid://c07klihdoripq" path="res://Assets/Meshes/Structures/Rooms/regular_room.gltf" id="1_gp0pe"]
-
-[node name="Node3D" type="Node3D"]
-
-[node name="regular_room" parent="." instance=ExtResource("1_gp0pe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.309283, 0, 0.341953)

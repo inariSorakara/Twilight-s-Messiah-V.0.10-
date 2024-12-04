@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7ms38f5bgdv7"]
+
+[ext_resource type="Script" path="res://Scripts/CustomClasses/Structures/Overworld/Fortress/fortress.gd" id="1_axvmg"]
+[ext_resource type="PackedScene" uid="uid://bv36d3202exdf" path="res://Scenes/Structures/Floors/fortress_floor.tscn" id="2_ded14"]
+
+[node name="Fortress" type="Node3D"]
+script = ExtResource("1_axvmg")
+floor_scene = ExtResource("2_ded14")
+
+[node name="Camera3D" type="Camera3D" parent="."]

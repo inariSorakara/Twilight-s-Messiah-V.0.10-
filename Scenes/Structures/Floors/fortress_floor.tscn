@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bv36d3202exdf"]
+
+[ext_resource type="Script" path="res://Scenes/Structures/Floors/fortress_floor.gd" id="1_u84fk"]
+[ext_resource type="PackedScene" uid="uid://chrncrkuahi4v" path="res://Scenes/Structures/Rooms/regular_room.tscn" id="2_j3auk"]
+
+[node name="FortressFloor" type="Node3D"]
+script = ExtResource("1_u84fk")
+room_scene = ExtResource("2_j3auk")

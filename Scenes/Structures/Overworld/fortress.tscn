@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://c7ms38f5bgdv7"]
+
+[ext_resource type="Script" path="res://Scripts/CustomClasses/Structures/Overworld/Fortress/fortress.gd" id="1_axvmg"]
+[ext_resource type="PackedScene" uid="uid://bv36d3202exdf" path="res://Scenes/Structures/Floors/fortress_floor.tscn" id="2_ded14"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yge2x"]
+sky_top_color = Color(0.133249, 0.167169, 0.214339, 1)
+sky_horizon_color = Color(0.583312, 0.584042, 0.586835, 1)
+ground_horizon_color = Color(0.583312, 0.584042, 0.586835, 1)
+
+[sub_resource type="Sky" id="Sky_1eeix"]
+sky_material = SubResource("ProceduralSkyMaterial_yge2x")
+
+[sub_resource type="Environment" id="Environment_hiuyw"]
+background_mode = 1
+background_color = Color(0.0431373, 0.0745098, 0.0666667, 1)
+sky = SubResource("Sky_1eeix")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Fortress" type="Node3D"]
+script = ExtResource("1_axvmg")
+floor_scene = ExtResource("2_ded14")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.93358, -0.358027, 0.0156318, 0, 0.0436193, 0.999048, -0.358368, 0.932692, -0.0407222, 0, 0, 0)
+light_color = Color(0.314316, 0.314316, 0.314316, 1)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_hiuyw")

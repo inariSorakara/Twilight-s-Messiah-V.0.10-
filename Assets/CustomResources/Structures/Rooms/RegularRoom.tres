@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="RegularRoomData" load_steps=2 format=3 uid="uid://hf2n0ivseyp2"]
+
+[ext_resource type="Script" path="res://Scripts/CustomResources/Structures/Room/RoomResourceData.gd" id="1_d2w8w"]
+
+[resource]
+script = ExtResource("1_d2w8w")
+room_coordinate = ""

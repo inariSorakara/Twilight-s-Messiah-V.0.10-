@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://d321ih1gmu7ld"]
+
+[ext_resource type="Script" path="res://Scripts/CustomClasses/Managers/GameManager.gd" id="1_3hbld"]
+[ext_resource type="Script" path="res://Scripts/CustomClasses/Managers/SceneManager/scene_manager.gd" id="1_aorkm"]
+
+[node name="Main" type="Node3D" node_paths=PackedStringArray("scene_manager")]
+script = ExtResource("1_3hbld")
+scene_manager = NodePath("SceneManager")
+
+[node name="SceneManager" type="Node" parent="."]
+script = ExtResource("1_aorkm")
+
+[node name="Camera3D" type="Camera3D" parent="."]

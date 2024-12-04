@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bndgam5oebjya"]
+
+[ext_resource type="Script" path="res://Scripts/CustomClasses/Entities/PlayableUnits/nya_overworld_unit.gd" id="1_dnjaf"]
+[ext_resource type="Texture2D" uid="uid://gx2gxx34kga1" path="res://Assets/Art/NPCs/Nya.png" id="1_fvdtx"]
+
+[node name="NyaOverworldUnit" type="Node3D"]
+transform = Transform3D(-0.25, 1.68504e-17, 2.18557e-08, 4.77671e-16, 0.25, 0, -2.18557e-08, 0, -0.25, 0, 0, 0)
+script = ExtResource("1_dnjaf")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.987688, 0.156434, 0, -0.156434, 0.987688, 0, 0, 0)
+texture = ExtResource("1_fvdtx")

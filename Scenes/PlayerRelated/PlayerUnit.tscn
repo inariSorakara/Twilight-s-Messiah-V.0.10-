@@ -1,13 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://k47uqnsfqaq"]
+[gd_scene load_steps=7 format=3 uid="uid://k47uqnsfqaq"]
 
+[ext_resource type="Script" path="res://Scripts/CustomClasses/Entities/PlayableUnits/playable_character.gd" id="1_48ics"]
 [ext_resource type="Script" path="res://Scripts/CustomClasses/FiniteStateMachine/finite_state_machine.gd" id="1_d2hjn"]
-[ext_resource type="Script" path="res://Scenes/PlayerRelated/PlayerOWidle.gd" id="2_n1253"]
-[ext_resource type="Script" path="res://Scenes/PlayerRelated/room_choosing.gd" id="3_24bjv"]
+[ext_resource type="Script" path="res://Scripts/CustomClasses/Entities/PlayableUnits/OverworldStates/PlayerOWidle.gd" id="2_n1253"]
+[ext_resource type="Script" path="res://Scripts/CustomClasses/Entities/PlayableUnits/OverworldStates/PlayerOWRoomChoosing.gd" id="3_24bjv"]
+[ext_resource type="PackedScene" uid="uid://bndgam5oebjya" path="res://Scenes/PlayerRelated/nya_overworld_unit.tscn" id="5_l7q6p"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1waei"]
 
 [node name="PlayerUnit" type="Node3D"]
-transform = Transform3D(0.5, 0, -8.7423e-08, 0, 0.5, 0, 8.7423e-08, 0, 0.5, 0, 0, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+script = ExtResource("1_48ics")
 
 [node name="PlayerBody" type="CharacterBody3D" parent="."]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
@@ -15,8 +18,13 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 [node name="PlayerShape" type="CollisionShape3D" parent="PlayerBody"]
 shape = SubResource("CapsuleShape3D_1waei")
 
-[node name="PlayerCamera" type="Camera3D" parent="."]
+[node name="NyaOverworldUnit" parent="PlayerBody" instance=ExtResource("5_l7q6p")]
+transform = Transform3D(-0.04, 0, -6.03983e-09, 0, 0.04, 0, 6.03983e-09, 0, -0.04, -0.5, 0.09, -0.7)
+
+[node name="PlayerCamera" type="Camera3D" parent="PlayerBody"]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
 current = true
+fov = 78.0
 
 [node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("1_d2hjn")

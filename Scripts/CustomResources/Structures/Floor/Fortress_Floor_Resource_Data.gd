@@ -1,10 +1,21 @@
-extends Node2D
-class_name Fortress
+extends Resource
+class_name FortressFloorData
+
+
 
 #region REFERENCES
+
 #endregion
 
 #region  GLOBAL VARIABLES
+
+#endregion
+
+#region  CONSTANTS
+
+#endregion
+
+#region  STATE MACHINES
 
 #endregion
 
@@ -13,8 +24,7 @@ class_name Fortress
 #endregion
 
 #region FUNCTIONS
-
+#Called when the node is ready
 func _ready() -> void:
 	pass
-
 #endregion
