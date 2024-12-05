@@ -15,6 +15,10 @@ run/main_scene="res://Scenes/MenusAndScreens/MainScene.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+DialogueMan="*res://Scripts/CustomClasses/Managers/DialogueManager/dialogue_manager.gd"
+
 [display]
 
 window/size/viewport_width=700
@@ -47,3 +51,4 @@ OverworldTurnRight={
 [rendering]
 
 renderer/rendering_method="mobile"
+textures/default_filters/use_nearest_mipmap_filter=true

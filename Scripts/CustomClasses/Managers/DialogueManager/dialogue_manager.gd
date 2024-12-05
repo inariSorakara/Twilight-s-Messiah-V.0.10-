@@ -11,9 +11,6 @@ class_name DialogueManager
 #endregion
 
 #region  SIGNALS
-
-#Dialogue has finished
-signal dialogue_finished
 #endregion
 
 #region FUNCTIONS

@@ -3,16 +3,16 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://gx2gxx34kga1"
-path.etc2="res://.godot/imported/Nya.png-5809489e0420c9f0c397c3167d07beed.etc2.ctex"
+path.s3tc="res://.godot/imported/Nya.png-5809489e0420c9f0c397c3167d07beed.s3tc.ctex"
 metadata={
-"imported_formats": ["etc2_astc"],
+"imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Art/NPCs/Nya.png"
-dest_files=["res://.godot/imported/Nya.png-5809489e0420c9f0c397c3167d07beed.etc2.ctex"]
+dest_files=["res://.godot/imported/Nya.png-5809489e0420c9f0c397c3167d07beed.s3tc.ctex"]
 
 [params]
 

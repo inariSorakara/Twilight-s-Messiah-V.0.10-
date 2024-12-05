@@ -1,0 +1,25 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cpa8s36raq0cq"]
+
+[ext_resource type="FontFile" uid="uid://div2k8alqlsnb" path="res://Assets/Fonts/8bitOperatorPlusSC-Regular.ttf" id="1_u23ut"]
+[ext_resource type="Texture2D" uid="uid://ltdbr3vjwwh2" path="res://Assets/ThemeRelated/PineTools.com_1-bit_UI_byBatuhanK.png" id="2_bock6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3nei"]
+atlas = ExtResource("2_bock6")
+region = Rect2(96, 83, 39, 14)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yjceg"]
+texture = SubResource("AtlasTexture_f3nei")
+
+[resource]
+default_font = ExtResource("1_u23ut")
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)
+Label/constants/line_spacing = 3
+Label/constants/outline_size = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/constants/shadow_outline_size = 1
+Label/font_sizes/font_size = 16
+Label/fonts/font = ExtResource("1_u23ut")
+Panel/styles/panel = SubResource("StyleBoxTexture_yjceg")

@@ -1,8 +1,10 @@
 extends Node3D
 class_name PlayerUnit
-#
+
 ##region REFERENCES
-#
+
+@export var Nya:NyaOverworldUnit
+
 #@export_category("Resource Related")
 #
 ##The player's data custom resource
