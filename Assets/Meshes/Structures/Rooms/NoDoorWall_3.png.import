@@ -3,9 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d2rlwssjv8l2c"
-path.s3tc="res://.godot/imported/NoDoorWall_3.png-9df2ae77b470d4121b32f7b4879f63de.s3tc.ctex"
+path.etc2="res://.godot/imported/NoDoorWall_3.png-9df2ae77b470d4121b32f7b4879f63de.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +15,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Assets/Meshes/Structures/Rooms/NoDoorWall_3.png"
-dest_files=["res://.godot/imported/NoDoorWall_3.png-9df2ae77b470d4121b32f7b4879f63de.s3tc.ctex"]
+dest_files=["res://.godot/imported/NoDoorWall_3.png-9df2ae77b470d4121b32f7b4879f63de.etc2.ctex"]
 
 [params]
 

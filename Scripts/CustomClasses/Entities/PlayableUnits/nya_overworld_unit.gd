@@ -1,31 +1,23 @@
 extends Node3D
-class_name NyaOverworldUnit
+# NyaOverworldUnit.gd
 
-## Hovering variables
-#var hover_speed: float = 1.0  # Time for one hover cycle (seconds)
-#var hover_amount: float = 0.2  # Distance to hover above and below
-#var hovering_up: bool = true  # Tracks the hover direction
-#
-#func _ready():
-	## Start the hovering animation
-	#start_hovering()
-#
-#func start_hovering():
-	## Calculate the target y position based on hover direction
-	#var sprite = $Sprite3D
-	#var target_y = sprite.transform.origin.y + (hover_amount if hovering_up else -hover_amount)
-	#hovering_up = !hovering_up  # Toggle direction for the next cycle
-#
-	## Create a Tween and add it to the scene tree
-	#var tween = create_tween().bind_node(self).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-#
-	## Animate the Y position using the Tween object
-	#tween.tween_property(
-		#sprite,
-		#"transform/position:y",
-		#target_y,
-		#hover_speed
-	#)
-#
-	## Loop the animation by calling this function again at the end of the tween
-	#tween.tween_callback(Callable(self, "start_hovering"))
+# [Global Variables]
+
+# [References]
+@export var sprite3d: Sprite3D
+
+# [Constants]
+const HOVER_AMOUNT: float = 3.0 # Adjust the hover amount as needed
+const HOVER_DURATION: float = 1  # Duration in seconds for half of the hover cycle
+
+# [Signals]
+
+# [Functions]
+
+func _ready():
+	start_hovering()
+
+func start_hovering():
+	var tween = create_tween().set_loops()
+	tween.tween_property(sprite3d, "position:y", HOVER_AMOUNT, HOVER_DURATION).as_relative().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(sprite3d, "position:y", -HOVER_AMOUNT , HOVER_DURATION).as_relative().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
