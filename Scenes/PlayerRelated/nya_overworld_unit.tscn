@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bndgam5oebjya"]
+[gd_scene load_steps=8 format=3 uid="uid://bndgam5oebjya"]
 
 [ext_resource type="Script" path="res://Scripts/CustomClasses/Entities/PlayableUnits/nya_overworld_unit.gd" id="1_dnjaf"]
 [ext_resource type="Texture2D" uid="uid://gx2gxx34kga1" path="res://Assets/Art/NPCs/Nya.png" id="1_fvdtx"]
 [ext_resource type="Script" path="res://Scripts/CustomClasses/Dialogues/Nya/NyaDialogue.gd" id="2_4mdx1"]
 [ext_resource type="FontFile" uid="uid://div2k8alqlsnb" path="res://Assets/Fonts/8bitOperatorPlusSC-Regular.ttf" id="3_r0fy1"]
 [ext_resource type="Theme" uid="uid://cpa8s36raq0cq" path="res://Assets/ThemeRelated/Version 0.10 theme.tres" id="3_smqbs"]
+[ext_resource type="Script" path="res://Scripts/CustomClasses/FiniteStateMachine/finite_state_machine.gd" id="6_s3joi"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jqm88"]
 font = ExtResource("3_r0fy1")
@@ -65,3 +66,8 @@ Now what?"
 label_settings = SubResource("LabelSettings_jqm88")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="NyaFSM" type="Node" parent="."]
+script = ExtResource("6_s3joi")
+
+[node name="Node" type="Node" parent="NyaFSM"]

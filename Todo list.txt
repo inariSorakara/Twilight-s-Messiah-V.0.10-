@@ -2,6 +2,9 @@
 
 #Continue with the player state machine
 # Make up a function to move from one room to the other
-# Make every mesh on the same scene, and then make the appropiate version of each room visible of invisible.
 #Make the torches actually emit light
 # Nya will replace the "Player notification" system and he will always be floating infront of the player.
+# Create a state machine for Nya that will change accordingly to the players
+# Create methods on Nya's states to display text on entering, update and exit
+# Make it so on some states the text presented is randomly chosen.
+The text on the Idle state should read something akin to "We are on room [The value in the room's coordinate variable that should modify the player's "current room@ variable.]"
