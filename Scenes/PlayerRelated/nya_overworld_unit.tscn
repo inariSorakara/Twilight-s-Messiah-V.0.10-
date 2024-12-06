@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bndgam5oebjya"]
+[gd_scene load_steps=10 format=3 uid="uid://bndgam5oebjya"]
 
 [ext_resource type="Script" path="res://Scripts/CustomClasses/Entities/PlayableUnits/nya_overworld_unit.gd" id="1_dnjaf"]
 [ext_resource type="Texture2D" uid="uid://gx2gxx34kga1" path="res://Assets/Art/NPCs/Nya.png" id="1_fvdtx"]
@@ -6,6 +6,13 @@
 [ext_resource type="FontFile" uid="uid://div2k8alqlsnb" path="res://Assets/Fonts/8bitOperatorPlusSC-Regular.ttf" id="3_r0fy1"]
 [ext_resource type="Theme" uid="uid://cpa8s36raq0cq" path="res://Assets/ThemeRelated/Version 0.10 theme.tres" id="3_smqbs"]
 [ext_resource type="Script" path="res://Scripts/CustomClasses/FiniteStateMachine/finite_state_machine.gd" id="6_s3joi"]
+[ext_resource type="Script" path="res://Scripts/CustomClasses/Entities/PlayableUnits/NyaOverworldStates/NyaOverworldIdle.gd" id="7_34bnm"]
+
+[sub_resource type="Resource" id="Resource_hpteg"]
+script = ExtResource("2_4mdx1")
+player_states = {
+"Idle": ["We are in room X", "What now?"]
+}
 
 [sub_resource type="LabelSettings" id="LabelSettings_jqm88"]
 font = ExtResource("3_r0fy1")
@@ -14,11 +21,12 @@ font_color = Color(0.445488, 0.445488, 0.445488, 1)
 outline_size = 8
 outline_color = Color(0, 0, 0, 1)
 
-[node name="NyaOverworldUnit" type="Node3D" node_paths=PackedStringArray("sprite3d")]
+[node name="NyaOverworldUnit" type="Node3D" node_paths=PackedStringArray("sprite3d", "dialogue_label")]
 transform = Transform3D(-0.25, 1.68504e-17, 2.18557e-08, 4.77671e-16, 0.25, 0, -2.18557e-08, 0, -0.25, 0, 0, 0)
 script = ExtResource("1_dnjaf")
 sprite3d = NodePath("Sprite3D")
-dialogue = ExtResource("2_4mdx1")
+dialogue_label = NodePath("CanvasLayer/NyaRelatedHuD/DialogueBox/MarginContainer/Dialogue")
+dialogue = SubResource("Resource_hpteg")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.987688, 0.156434, 0, -0.156434, 0.987688, 0, 0, 0)
@@ -67,7 +75,12 @@ label_settings = SubResource("LabelSettings_jqm88")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NyaFSM" type="Node" parent="."]
+[node name="NyaFSM" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("6_s3joi")
+initial_state = NodePath("Idle")
 
-[node name="Node" type="Node" parent="NyaFSM"]
+[node name="Idle" type="Node" parent="NyaFSM" node_paths=PackedStringArray("dialogue_panel", "dialogue_box", "state_owner")]
+script = ExtResource("7_34bnm")
+dialogue_panel = NodePath("../../CanvasLayer/NyaRelatedHuD/DialogueBox")
+dialogue_box = NodePath("../../CanvasLayer/NyaRelatedHuD/DialogueBox/MarginContainer/Dialogue")
+state_owner = NodePath("../..")

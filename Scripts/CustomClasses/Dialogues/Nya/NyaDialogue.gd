@@ -5,5 +5,5 @@ class_name NyaDialogue
 
 #region Player States
 
-var player_states:Dictionary = {"Idle": ["We are in room X", "What now?"]}
+@export var player_states:Dictionary = {"Idle": ["We are in room X", "What now?"]}
 #endregion

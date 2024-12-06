@@ -15,7 +15,9 @@ var char_timer: Timer = null
 #endregion
 
 #region Signals
+@warning_ignore("unused_signal")
 signal dialogue_started()
+@warning_ignore("unused_signal")
 signal dialogue_finished()
 
 #endregion
@@ -76,6 +78,7 @@ func next_dialogue() -> void:
 				hide_dialogue()
 
 # Internal function to start typing a dialogue string
+@warning_ignore("unused_parameter")
 func _start_typing(text: String) -> void:
 		if char_timer:
 				char_timer.stop()

@@ -3,9 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bfb8ioltdlihc"
-path.etc2="res://.godot/imported/regular_room_6.png-84c5999f316aa5b4011745e35365405b.etc2.ctex"
+path.s3tc="res://.godot/imported/regular_room_6.png-84c5999f316aa5b4011745e35365405b.s3tc.ctex"
 metadata={
-"imported_formats": ["etc2_astc"],
+"imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +15,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Assets/Art/Structures/Rooms/Regular room/regular_room_6.png"
-dest_files=["res://.godot/imported/regular_room_6.png-84c5999f316aa5b4011745e35365405b.etc2.ctex"]
+dest_files=["res://.godot/imported/regular_room_6.png-84c5999f316aa5b4011745e35365405b.s3tc.ctex"]
 
 [params]
 

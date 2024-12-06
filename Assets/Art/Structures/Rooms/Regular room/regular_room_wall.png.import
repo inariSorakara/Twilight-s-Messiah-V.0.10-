@@ -3,16 +3,16 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c28l55jpdty1k"
-path.etc2="res://.godot/imported/regular_room_wall.png-b1508314ec7f324e7a847ed379713069.etc2.ctex"
+path.s3tc="res://.godot/imported/regular_room_wall.png-b1508314ec7f324e7a847ed379713069.s3tc.ctex"
 metadata={
-"imported_formats": ["etc2_astc"],
+"imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Art/Structures/Rooms/Regular room/regular_room_wall.png"
-dest_files=["res://.godot/imported/regular_room_wall.png-b1508314ec7f324e7a847ed379713069.etc2.ctex"]
+dest_files=["res://.godot/imported/regular_room_wall.png-b1508314ec7f324e7a847ed379713069.s3tc.ctex"]
 
 [params]
 
