@@ -32,4 +32,7 @@ func _ready() -> void:
 func Enter():
 	dialogue_panel.show()
 	state_owner.idle_state_dialogue()
+	await DialogueMan.dialogue_finished
+	dialogue_panel.hide()
+	
 #endregion

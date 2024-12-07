@@ -24,6 +24,7 @@ DialogueMan="*res://Scripts/CustomClasses/Managers/DialogueManager/dialogue_mana
 window/size/viewport_width=700
 window/size/viewport_height=600
 window/size/always_on_top=true
+window/stretch/mode="canvas_items"
 
 [global_group]
 
