@@ -6,6 +6,7 @@ class_name NyaOverworldIdle
 
 @export var dialogue_panel:Panel
 @export var dialogue_box:Label
+@export var nya_dialogue_box:Control
 #endregion
 
 #region  GLOBAL VARIABLES
@@ -30,9 +31,9 @@ func _ready() -> void:
 	pass
 
 func Enter():
-	dialogue_panel.show()
+	nya_dialogue_box.show()
 	state_owner.idle_state_dialogue()
 	await DialogueMan.dialogue_finished
-	dialogue_panel.hide()
+	nya_dialogue_box.hide()
 	
 #endregion

@@ -24,7 +24,7 @@ outline_color = Color(0, 0, 0, 1)
 transform = Transform3D(-0.25, 1.68504e-17, 2.18557e-08, 4.77671e-16, 0.25, 0, -2.18557e-08, 0, -0.25, 0, 0, 0)
 script = ExtResource("1_dnjaf")
 sprite3d = NodePath("Sprite3D")
-dialogue_label = NodePath("CanvasLayer/NyaRelatedHuD/DialogueBox/MarginContainer/Dialogue")
+dialogue_label = NodePath("CanvasLayer/NyaRelatedHuD/NyaDialogueBox/DialogueBox/MarginContainer/Dialogue")
 dialogue = SubResource("Resource_hpteg")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
@@ -38,46 +38,84 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 7.0
+offset_right = 3.0
+offset_bottom = -79.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_smqbs")
 
-[node name="DialogueBox" type="Panel" parent="CanvasLayer/NyaRelatedHuD"]
+[node name="NyaDialogueBox" type="Control" parent="CanvasLayer/NyaRelatedHuD"]
+anchors_preset = 0
+offset_left = 137.0
+offset_top = 151.0
+offset_right = 694.0
+offset_bottom = 212.0
+
+[node name="DialogueBox" type="Panel" parent="CanvasLayer/NyaRelatedHuD/NyaDialogueBox"]
 custom_minimum_size = Vector2(200, 80)
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.214
-anchor_bottom = 0.1
-offset_left = 186.0
-offset_top = 167.0
-offset_right = 533.2
-offset_bottom = 267.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/NyaRelatedHuD/DialogueBox"]
-layout_mode = 0
-offset_left = 32.0
-offset_top = 32.0
-offset_right = 465.0
-offset_bottom = 127.0
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/NyaRelatedHuD/NyaDialogueBox/DialogueBox"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -269.0
+offset_top = -36.5
+offset_right = 269.0
+offset_bottom = 36.5
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("3_smqbs")
 theme_override_constants/margin_left = 6
 theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 0
 
-[node name="Dialogue" type="Label" parent="CanvasLayer/NyaRelatedHuD/DialogueBox/MarginContainer"]
+[node name="Dialogue" type="Label" parent="CanvasLayer/NyaRelatedHuD/NyaDialogueBox/DialogueBox/MarginContainer"]
+custom_minimum_size = Vector2(530, 70)
 layout_mode = 2
 theme = ExtResource("3_smqbs")
 text = "We are in Room.
 Now what?"
 label_settings = SubResource("LabelSettings_jqm88")
 horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="TalkerBox" type="Panel" parent="CanvasLayer/NyaRelatedHuD/NyaDialogueBox"]
+layout_mode = 1
+offset_left = 16.0
+offset_top = -29.0
+offset_right = 112.0
+offset_bottom = -2.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/NyaRelatedHuD/NyaDialogueBox/TalkerBox"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 2.0
+offset_right = 84.0
+offset_bottom = 26.0
+
+[node name="Talker" type="Label" parent="CanvasLayer/NyaRelatedHuD/NyaDialogueBox/TalkerBox/MarginContainer"]
+layout_mode = 2
+text = "Nya"
+horizontal_alignment = 1
 
 [node name="NyaFSM" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("6_s3joi")
 initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="NyaFSM" node_paths=PackedStringArray("dialogue_panel", "dialogue_box", "state_owner")]
+[node name="Idle" type="Node" parent="NyaFSM" node_paths=PackedStringArray("dialogue_panel", "dialogue_box", "nya_dialogue_box", "state_owner")]
 script = ExtResource("7_34bnm")
-dialogue_panel = NodePath("../../CanvasLayer/NyaRelatedHuD/DialogueBox")
-dialogue_box = NodePath("../../CanvasLayer/NyaRelatedHuD/DialogueBox/MarginContainer/Dialogue")
+dialogue_panel = NodePath("../../CanvasLayer/NyaRelatedHuD/NyaDialogueBox/DialogueBox")
+dialogue_box = NodePath("../../CanvasLayer/NyaRelatedHuD/NyaDialogueBox/DialogueBox/MarginContainer/Dialogue")
+nya_dialogue_box = NodePath("../../CanvasLayer/NyaRelatedHuD/NyaDialogueBox")
 state_owner = NodePath("../..")

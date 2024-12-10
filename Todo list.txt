@@ -1,10 +1,8 @@
 #Twilight's Messiah V 0.10 TODO list.
 
+#Investigate why the canvas layer objects change so massively in size depending on the screen.
 #Continue with the player state machine
 # Make up a function to move from one room to the other
 #Make the torches actually emit light
-# Nya will replace the "Player notification" system and he will always be floating infront of the player.
-# Create a state machine for Nya that will change accordingly to the players
-# Create methods on Nya's states to display text on entering, update and exit
 # Make it so on some states the text presented is randomly chosen.
-The text on the Idle state should read something akin to "We are on room [The value in the room's coordinate variable that should modify the player's "current room@ variable.]"
+#Make Nya's dialogue a 3D label instad of 2D

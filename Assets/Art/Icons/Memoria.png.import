@@ -2,27 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crwo8ehv1xrqj"
-path.s3tc="res://.godot/imported/82_albedo.png-41fcb790ca2aec5303c549782c14fd42.s3tc.ctex"
+uid="uid://cg01qeoynrtnm"
+path="res://.godot/imported/Memoria.png-b1653c12f7b17189826cf43d22c0671c.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Meshes/Structures/Rooms/textures/82_albedo.png"
-dest_files=["res://.godot/imported/82_albedo.png-41fcb790ca2aec5303c549782c14fd42.s3tc.ctex"]
+source_file="res://Assets/Art/Icons/Memoria.png"
+dest_files=["res://.godot/imported/Memoria.png-b1653c12f7b17189826cf43d22c0671c.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -32,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

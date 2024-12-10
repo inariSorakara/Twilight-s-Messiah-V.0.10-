@@ -3,7 +3,7 @@ class_name DialogueManager
 
 #region Global Variables
 var is_showing_dialogue: bool = false
-var typing_speed: float = 0.10	# Adjust typing speed as needed
+var typing_speed: float = 0.05	# Adjust typing speed as needed
 
 # Internal variables for managing dialogue
 var current_label: Label = null
@@ -106,7 +106,7 @@ func _finish_typing_current_string() -> void:
 				char_timer.stop()
 				char_timer.queue_free()
 				char_timer = null
-  await get_tree().create_timer(0.5).timeout
+		await get_tree().create_timer(1).timeout
 		next_dialogue()
 
 # Resets dialogue management variables
