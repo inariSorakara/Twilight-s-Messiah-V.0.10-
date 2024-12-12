@@ -5,6 +5,10 @@ class_name PlayerUnit
 
 @export var Nya:NyaOverworldUnit
 
+@export var state_machine:FiniteStateMachine
+
+@onready var move_button:Button = Nya.ActionMenu.Move_Button
+
 #@export_category("Resource Related")
 #
 ##The player's data custom resource
@@ -88,15 +92,23 @@ class_name PlayerUnit
 	#MaxHPCalulated.emit(player_data.maximum_health)
 #
 ##endregion
-#
-##region Listener Functions
-#
+
+func connect_action_menu_buttons():
+	move_button.pressed.connect(_on_move_button_pressed)
+
+#region Listener Functions
+
+func _on_move_button_pressed():
+	Nya.NyaFSM.force_change_state("ChoosingRoom")
+	await get_tree().process_frame
+	state_machine.force_change_state("Choosing")
+
 #func _on_action_menu_button_reemitter(button):
 	#if button == "Move":
 		#FSM.change_state(FSM.current_state, "Moving")
 #
 #func _on_signalsbus_player_enters_room_reemitter(room_data):
 	#print(room_data)
-#
-##endregion
+
+#endregion
 ##endregion

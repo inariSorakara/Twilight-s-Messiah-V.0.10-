@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/CustomClasses/Managers/GameManager.gd" id="1_3hbld"]
 [ext_resource type="Script" path="res://Scripts/CustomClasses/Managers/SceneManager/scene_manager.gd" id="1_aorkm"]
 [ext_resource type="Script" path="res://Scripts/CustomClasses/Managers/PlayerManager/player_manager.gd" id="3_65m45"]
-[ext_resource type="Script" path="res://Scripts/CustomClasses/Managers/DialogueManager/dialogue_manager.gd" id="4_abkfb"]
+[ext_resource type="Script" path="res://Scripts/CustomClasses/Managers/DialogueManager/dialogueManager.gd" id="4_v4vdd"]
 
 [node name="Main" type="Node3D" node_paths=PackedStringArray("scene_manager", "player_manager") groups=["Players Alive", "Players Dead"]]
 script = ExtResource("1_3hbld")
@@ -17,4 +17,4 @@ script = ExtResource("1_aorkm")
 script = ExtResource("3_65m45")
 
 [node name="DialogueManager" type="Node" parent="."]
-script = ExtResource("4_abkfb")
+script = ExtResource("4_v4vdd")

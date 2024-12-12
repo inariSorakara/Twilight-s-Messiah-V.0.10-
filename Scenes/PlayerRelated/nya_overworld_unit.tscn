@@ -1,121 +1,100 @@
-[gd_scene load_steps=10 format=3 uid="uid://bndgam5oebjya"]
+[gd_scene load_steps=12 format=3 uid="uid://fk0rn52wwwes"]
 
 [ext_resource type="Script" path="res://Scripts/CustomClasses/Entities/PlayableUnits/nya_overworld_unit.gd" id="1_dnjaf"]
 [ext_resource type="Texture2D" uid="uid://gx2gxx34kga1" path="res://Assets/Art/NPCs/Nya.png" id="1_fvdtx"]
-[ext_resource type="Script" path="res://Scripts/CustomClasses/Dialogues/Nya/NyaDialogue.gd" id="2_4mdx1"]
 [ext_resource type="FontFile" uid="uid://div2k8alqlsnb" path="res://Assets/Fonts/8bitOperatorPlusSC-Regular.ttf" id="3_r0fy1"]
 [ext_resource type="Theme" uid="uid://cpa8s36raq0cq" path="res://Assets/ThemeRelated/Version 0.10 theme.tres" id="3_smqbs"]
 [ext_resource type="Script" path="res://Scripts/CustomClasses/FiniteStateMachine/finite_state_machine.gd" id="6_s3joi"]
 [ext_resource type="Script" path="res://Scripts/CustomClasses/Entities/PlayableUnits/NyaOverworldStates/NyaOverworldIdle.gd" id="7_34bnm"]
+[ext_resource type="Script" path="res://Scripts/CustomClasses/Dialogues/NPCS/Nya/NyaDialogue.gd" id="7_s6ag6"]
+[ext_resource type="PackedScene" uid="uid://bsuuq045fonku" path="res://Scenes/MenusAndScreens/InterfaceRelated/action_menu.tscn" id="8_bubxe"]
+[ext_resource type="Script" path="res://Scripts/CustomClasses/Entities/PlayableUnits/NyaOverworldStates/NyaOverworldInMenu.gd" id="8_jl1ql"]
+[ext_resource type="Script" path="res://Scripts/CustomClasses/Entities/PlayableUnits/NyaOverworldStates/NyaOverworldChoosingRoom.gd" id="8_kmnmq"]
 
-[sub_resource type="Resource" id="Resource_hpteg"]
-script = ExtResource("2_4mdx1")
-player_states = {
-"Idle": ["We are in room X", "What now?"]
-}
-
-[sub_resource type="LabelSettings" id="LabelSettings_jqm88"]
+[sub_resource type="LabelSettings" id="LabelSettings_befc4"]
 font = ExtResource("3_r0fy1")
-font_size = 24
-outline_size = 8
-outline_color = Color(0, 0, 0, 1)
+font_size = 15
 
-[node name="NyaOverworldUnit" type="Node3D" node_paths=PackedStringArray("sprite3d", "dialogue_label")]
-transform = Transform3D(-0.25, 1.68504e-17, 2.18557e-08, 4.77671e-16, 0.25, 0, -2.18557e-08, 0, -0.25, 0, 0, 0)
-script = ExtResource("1_dnjaf")
-sprite3d = NodePath("Sprite3D")
-dialogue_label = NodePath("CanvasLayer/NyaRelatedHuD/NyaDialogueBox/DialogueBox/MarginContainer/Dialogue")
-dialogue = SubResource("Resource_hpteg")
-
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.987688, 0.156434, 0, -0.156434, 0.987688, 0, 0, 0)
-texture = ExtResource("1_fvdtx")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="NyaRelatedHuD" type="Control" parent="CanvasLayer"]
+[node name="NyaOverworldUnit" type="Control" node_paths=PackedStringArray("NyaSprite", "ActionMenu", "NyaFSM")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 3.0
-offset_top = 7.0
-offset_right = 3.0
-offset_bottom = -79.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_smqbs")
+script = ExtResource("1_dnjaf")
+NyaSprite = NodePath("NyaSprite")
+ActionMenu = NodePath("ActionMenu")
+NyaFSM = NodePath("NyaFSM")
 
-[node name="NyaDialogueBox" type="Control" parent="CanvasLayer/NyaRelatedHuD"]
-anchors_preset = 0
-offset_left = 137.0
-offset_top = 151.0
-offset_right = 694.0
-offset_bottom = 212.0
-
-[node name="DialogueBox" type="Panel" parent="CanvasLayer/NyaRelatedHuD/NyaDialogueBox"]
-custom_minimum_size = Vector2(200, 80)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/NyaRelatedHuD/NyaDialogueBox/DialogueBox"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -269.0
-offset_top = -36.5
-offset_right = 269.0
-offset_bottom = 36.5
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("3_smqbs")
-theme_override_constants/margin_left = 6
-theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 0
-
-[node name="Dialogue" type="Label" parent="CanvasLayer/NyaRelatedHuD/NyaDialogueBox/DialogueBox/MarginContainer"]
-custom_minimum_size = Vector2(530, 70)
-layout_mode = 2
-theme = ExtResource("3_smqbs")
-text = "We are in Room.
-Now what?"
-label_settings = SubResource("LabelSettings_jqm88")
-horizontal_alignment = 1
-autowrap_mode = 2
-
-[node name="TalkerBox" type="Panel" parent="CanvasLayer/NyaRelatedHuD/NyaDialogueBox"]
-layout_mode = 1
-offset_left = 16.0
-offset_top = -29.0
-offset_right = 112.0
-offset_bottom = -2.0
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/NyaRelatedHuD/NyaDialogueBox/TalkerBox"]
+[node name="NyaSprite" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 11.0
-offset_top = 2.0
-offset_right = 84.0
-offset_bottom = 26.0
+offset_left = 42.0
+offset_top = 157.0
+offset_right = 162.0
+offset_bottom = 277.0
+texture = ExtResource("1_fvdtx")
+expand_mode = 1
+flip_h = true
 
-[node name="Talker" type="Label" parent="CanvasLayer/NyaRelatedHuD/NyaDialogueBox/TalkerBox/MarginContainer"]
+[node name="ActionMenu" parent="." instance=ExtResource("8_bubxe")]
+visible = false
+layout_mode = 1
+offset_left = 26.0
+offset_top = 451.0
+offset_right = -348.0
+offset_bottom = -116.0
+
+[node name="NyaDialogueBox" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.245714
+anchor_top = 0.318333
+anchor_right = 0.541429
+anchor_bottom = 0.413333
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="NyaDialogueBox"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 12.0
+offset_right = 190.0
+offset_bottom = 43.0
+
+[node name="NyaDialogue" type="Label" parent="NyaDialogueBox/MarginContainer"]
 layout_mode = 2
-text = "Nya"
+size_flags_vertical = 1
+text = "Lorem Ipsum"
+label_settings = SubResource("LabelSettings_befc4")
 horizontal_alignment = 1
 
 [node name="NyaFSM" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("6_s3joi")
 initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="NyaFSM" node_paths=PackedStringArray("dialogue_panel", "dialogue_box", "nya_dialogue_box", "state_owner")]
+[node name="Idle" type="Node" parent="NyaFSM" node_paths=PackedStringArray("dialogue_panel", "dialogue_box", "dialogue_text", "state_owner")]
 script = ExtResource("7_34bnm")
-dialogue_panel = NodePath("../../CanvasLayer/NyaRelatedHuD/NyaDialogueBox/DialogueBox")
-dialogue_box = NodePath("../../CanvasLayer/NyaRelatedHuD/NyaDialogueBox/DialogueBox/MarginContainer/Dialogue")
-nya_dialogue_box = NodePath("../../CanvasLayer/NyaRelatedHuD/NyaDialogueBox")
+dialogue_panel = NodePath("../../NyaDialogueBox")
+dialogue_box = NodePath("../../NyaDialogueBox/MarginContainer/NyaDialogue")
+dialogue_text = NodePath("../../DATA/NyaDialogue")
 state_owner = NodePath("../..")
+
+[node name="InMenu" type="Node" parent="NyaFSM" node_paths=PackedStringArray("dialogue_panel", "dialogue_box", "dialogue_text", "state_owner")]
+script = ExtResource("8_jl1ql")
+dialogue_panel = NodePath("../../NyaDialogueBox")
+dialogue_box = NodePath("../../NyaDialogueBox/MarginContainer/NyaDialogue")
+dialogue_text = NodePath("../../DATA/NyaDialogue")
+state_owner = NodePath("../..")
+
+[node name="ChoosingRoom" type="Node" parent="NyaFSM" node_paths=PackedStringArray("dialogue_panel", "dialogue_box", "dialogue_text", "state_owner")]
+script = ExtResource("8_kmnmq")
+dialogue_panel = NodePath("../../NyaDialogueBox")
+dialogue_box = NodePath("../../NyaDialogueBox/MarginContainer/NyaDialogue")
+dialogue_text = NodePath("../../DATA/NyaDialogue")
+state_owner = NodePath("../..")
+
+[node name="DATA" type="Node" parent="."]
+
+[node name="NyaDialogue" type="Node" parent="DATA"]
+script = ExtResource("7_s6ag6")

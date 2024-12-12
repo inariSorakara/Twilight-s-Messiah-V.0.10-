@@ -1,5 +1,5 @@
-extends Resource
-class_name Dialogue
+extends Node
+class_name dialogue
 
 #region  GLOBAL VARIABLES
 

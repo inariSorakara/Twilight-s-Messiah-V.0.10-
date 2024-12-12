@@ -1,8 +1,29 @@
 #Twilight's Messiah V 0.10 TODO list.
 
-#Investigate why the canvas layer objects change so massively in size depending on the screen.
-#Continue with the player state machine
-# Make up a function to move from one room to the other
-#Make the torches actually emit light
-# Make it so on some states the text presented is randomly chosen.
-#Make Nya's dialogue a 3D label instad of 2D
+#Specific things to develope:
+	#Turn system:
+		#Start turn Method
+		#End turn Method
+	#Doom clock system
+	#Moving system overhaul
+	#Fade out animation.
+
+#Primary things:
+	#Continue with both the player's and Nya's state machines.
+	#When the player goes from Choosing room to Inmenu, reset the player's rotation to the state it was before entering.
+	#Implement on the player script the current room variable and target room variable.
+	#Make it so, when the player's body enters a room, the room area has a reference of the room itself become
+	the player's current room.
+	#While choosing room, find a way to make the room the player is looking towards the "target room" variable (Very probably will be done with a raycast 3D)
+	#If there's no room, point that out in the Nya's notification.
+	#Have nya indicate the target room or if there's no room there.
+	#After the player chooses a room:
+		#If there's no room there, have Nya inform so.
+		#If there's a target room:
+			#Create a method to move from room to room:
+				#Fade the screen to black
+				#Move the player to the target room, making it in the process the current room
+				#Fade the screen back.
+				#Create a "Turn end method" and have it run after moving the player FOR NOW (It will later happen after the event happens)
+#Secondary things:
+	#Make the torches actually emit light

@@ -1,18 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://k47uqnsfqaq"]
+[gd_scene load_steps=9 format=3 uid="uid://k47uqnsfqaq"]
 
 [ext_resource type="Script" path="res://Scripts/CustomClasses/Entities/PlayableUnits/playable_character.gd" id="1_48ics"]
 [ext_resource type="Script" path="res://Scripts/CustomClasses/FiniteStateMachine/finite_state_machine.gd" id="1_d2hjn"]
 [ext_resource type="Script" path="res://Scripts/CustomClasses/Entities/PlayableUnits/OverworldStates/PlayerOWidle.gd" id="2_n1253"]
 [ext_resource type="Script" path="res://Scripts/CustomClasses/Entities/PlayableUnits/OverworldStates/PlayerOWRoomChoosing.gd" id="3_24bjv"]
-[ext_resource type="PackedScene" uid="uid://bndgam5oebjya" path="res://Scenes/PlayerRelated/nya_overworld_unit.tscn" id="5_l7q6p"]
+[ext_resource type="Script" path="res://Scripts/CustomClasses/Entities/PlayableUnits/OverworldStates/PlayerOWInMenu.gd" id="5_af0au"]
+[ext_resource type="PackedScene" uid="uid://fk0rn52wwwes" path="res://Scenes/PlayerRelated/nya_overworld_unit.tscn" id="5_l7q6p"]
 [ext_resource type="PackedScene" uid="uid://cx7nwiyqoipux" path="res://Scenes/MenusAndScreens/InterfaceRelated/HUD.tscn" id="6_o4hwe"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1waei"]
 
-[node name="PlayerUnit" type="Node3D" node_paths=PackedStringArray("Nya")]
+[node name="PlayerUnit" type="Node3D" node_paths=PackedStringArray("Nya", "state_machine")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 script = ExtResource("1_48ics")
 Nya = NodePath("PlayerBody/NyaOverworldUnit")
+state_machine = NodePath("FiniteStateMachine")
 
 [node name="PlayerBody" type="CharacterBody3D" parent="."]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
@@ -21,7 +23,10 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_1waei")
 
 [node name="NyaOverworldUnit" parent="PlayerBody" instance=ExtResource("5_l7q6p")]
-transform = Transform3D(-0.04, 0, -6.03983e-09, 0, 0.04, 0, 6.03983e-09, 0, -0.04, -0.5, 0.04, -0.7)
+offset_left = -0.5
+offset_top = 0.04
+offset_right = -0.5
+offset_bottom = 0.04
 
 [node name="PlayerCamera" type="Camera3D" parent="PlayerBody"]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
@@ -36,6 +41,10 @@ initial_state = NodePath("Idle")
 script = ExtResource("2_n1253")
 state_owner = NodePath("../..")
 
+[node name="Inmenu" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("state_owner")]
+script = ExtResource("5_af0au")
+state_owner = NodePath("../..")
+
 [node name="Choosing" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("state_owner")]
 script = ExtResource("3_24bjv")
 state_owner = NodePath("../..")
@@ -43,3 +52,5 @@ state_owner = NodePath("../..")
 [node name="Interface" type="CanvasLayer" parent="."]
 
 [node name="HUD" parent="Interface" instance=ExtResource("6_o4hwe")]
+
+[node name="NyaOverworldUnit" parent="Interface" instance=ExtResource("5_l7q6p")]

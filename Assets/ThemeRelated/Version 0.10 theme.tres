@@ -1,7 +1,44 @@
-[gd_resource type="Theme" load_steps=21 format=4 uid="uid://cpa8s36raq0cq"]
+[gd_resource type="Theme" load_steps=32 format=4 uid="uid://cpa8s36raq0cq"]
 
+[ext_resource type="Texture2D" uid="uid://c2c5h3m8ur7rt" path="res://Assets/ThemeRelated/ActionMenuButton/Button Disable.png" id="1_kj5mq"]
 [ext_resource type="FontFile" uid="uid://div2k8alqlsnb" path="res://Assets/Fonts/8bitOperatorPlusSC-Regular.ttf" id="1_u23ut"]
 [ext_resource type="Texture2D" uid="uid://ltdbr3vjwwh2" path="res://Assets/ThemeRelated/PineTools.com_1-bit_UI_byBatuhanK.png" id="2_bock6"]
+[ext_resource type="Texture2D" uid="uid://bx38qql8um0o7" path="res://Assets/ThemeRelated/ActionMenuButton/Button Hover.png" id="2_nm6st"]
+[ext_resource type="Texture2D" uid="uid://31sxuewb8k3q" path="res://Assets/ThemeRelated/ActionMenuButton/Button Active.png" id="3_hadgj"]
+[ext_resource type="Texture2D" uid="uid://b8c83tsiwn6ib" path="res://Assets/ThemeRelated/ActionMenuButton/Button Normal.png" id="4_5qy0c"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_704xv"]
+texture = ExtResource("1_kj5mq")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a1s4b"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1ertv"]
+texture = ExtResource("2_nm6st")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ddh4q"]
+texture = ExtResource("3_hadgj")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vakmf"]
+texture = ExtResource("4_5qy0c")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f3nei"]
 atlas = ExtResource("2_bock6")
@@ -9,6 +46,14 @@ region = Rect2(96, 83, 39, 14)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yjceg"]
 texture = SubResource("AtlasTexture_f3nei")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qwj3"]
+atlas = ExtResource("2_bock6")
+region = Rect2(272, 119, 173, 84)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_afwav"]
+texture = SubResource("AtlasTexture_2qwj3")
+region_rect = Rect2(0, 0, 174, 86)
 
 [sub_resource type="Image" id="Image_2bvv3"]
 data = {
@@ -1534,6 +1579,30 @@ corner_detail = 6
 
 [resource]
 default_font = ExtResource("1_u23ut")
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 16
+Button/fonts/font = ExtResource("1_u23ut")
+Button/styles/disabled = SubResource("StyleBoxTexture_704xv")
+Button/styles/focus = SubResource("StyleBoxFlat_a1s4b")
+Button/styles/hover = SubResource("StyleBoxTexture_1ertv")
+Button/styles/normal = SubResource("StyleBoxTexture_ddh4q")
+Button/styles/pressed = SubResource("StyleBoxTexture_vakmf")
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/colors/font_shadow_color = Color(0, 0, 0, 0)
@@ -1545,6 +1614,7 @@ Label/constants/shadow_outline_size = 1
 Label/font_sizes/font_size = 16
 Label/fonts/font = ExtResource("1_u23ut")
 Panel/styles/panel = SubResource("StyleBoxTexture_yjceg")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_afwav")
 ProgressBar/colors/font_color = Color(0, 0, 0, 1)
 ProgressBar/colors/font_outline_color = Color(1, 1, 1, 1)
 ProgressBar/constants/outline_size = 3

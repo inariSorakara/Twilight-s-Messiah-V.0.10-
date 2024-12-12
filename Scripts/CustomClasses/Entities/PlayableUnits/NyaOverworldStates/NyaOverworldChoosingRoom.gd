@@ -1,9 +1,7 @@
 extends State
-class_name NyaOverworldIdle
-
+class_name NyaOverworldChoosingRoom
 
 #region REFERENCES
-
 @export var dialogue_panel:Panel
 @export var dialogue_box:Label
 @export var dialogue_text:NyaDialogue
@@ -32,9 +30,9 @@ func _ready() -> void:
 
 func Enter():
 	dialogue_panel.show()
-	var idle_dialogue:Dictionary = dialogue_text.state_dialogues.get("Idle")
+	var choosing_room_dialogue:Dictionary = dialogue_text.state_dialogues.get("Move_Action")
 	var dialogue_randomizer:int = randi_range(0,2)
-	var chosen_dialogue:Array = idle_dialogue.get(str(dialogue_randomizer))
+	var chosen_dialogue:Array = choosing_room_dialogue.get(str(dialogue_randomizer))
 	DialogueMan2.show_dialogue(chosen_dialogue,dialogue_box)
 	await  DialogueMan2.dialogue_finished
 	dialogue_panel.hide()

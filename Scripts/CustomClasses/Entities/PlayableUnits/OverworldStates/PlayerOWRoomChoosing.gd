@@ -1,6 +1,9 @@
 extends State
 class_name PlayerOverworldRoomChoosing
 
+#region References
+@onready var Nya:NyaOverworldUnit
+#endregion
 #region GLOBAL VARIABLES
 
 # Rotation speed in degrees per action
@@ -10,16 +13,20 @@ class_name PlayerOverworldRoomChoosing
 #region FUNCTIONS
 # Called when the node is ready
 func _ready() -> void:
-	pass
+	Nya = state_owner.Nya
 
 func Enter():
-	print("In Choosing State")
+	pass
 
 func Update(_delta):
 	if Input.is_action_just_released("OverworldTurnLeft"):
 		turn_left()
 	elif Input.is_action_just_released("OverworldTurnRight"):
 		turn_right()
+	elif Input.is_action_just_released("OverworldNegate"):
+		Nya.NyaFSM.force_change_state("InMenu")
+		await DialogueMan2.dialogue_finished
+		state_transition.emit(self,"Inmenu")
 
 func turn_left():
 	start_tween(90)  # Rotate left (counterclockwise)
