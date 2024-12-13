@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cx7nwiyqoipux"]
+[gd_scene load_steps=6 format=3 uid="uid://cx7nwiyqoipux"]
 
 [ext_resource type="Theme" uid="uid://cpa8s36raq0cq" path="res://Assets/ThemeRelated/Version 0.10 theme.tres" id="1_olae8"]
 [ext_resource type="Texture2D" uid="uid://cg01qeoynrtnm" path="res://Assets/Art/Icons/Memoria.png" id="2_3w3jf"]
+[ext_resource type="Script" path="res://Scripts/CustomClasses/ScreensAndMenus/hud.gd" id="2_hxiv3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_32slv"]
 font_size = 18
@@ -10,7 +11,7 @@ outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hldw7"]
 
-[node name="HUD" type="Control"]
+[node name="HUD" type="Control" node_paths=PackedStringArray("current_turn_label", "doom_counter_label", "coordinate_label", "event_label", "floor_label", "player_memorias_label", "player_health_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,6 +20,14 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("1_olae8")
+script = ExtResource("2_hxiv3")
+current_turn_label = NodePath("TurnInformation/Panel/CurrentTurn")
+doom_counter_label = NodePath("PlayerInformation/HealthBar/HealthLabel")
+coordinate_label = NodePath("RoomInformation/Panel/Coordinate")
+event_label = NodePath("RoomInformation/Panel/Event")
+floor_label = NodePath("FloorInformation/Panel/Floor")
+player_memorias_label = NodePath("PlayerInformation/Memorias/Memorias")
+player_health_label = NodePath("PlayerInformation/HealthBar/HealthLabel")
 
 [node name="TurnInformation" type="Control" parent="."]
 anchors_preset = 0

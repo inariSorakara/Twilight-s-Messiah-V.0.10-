@@ -1,14 +1,17 @@
 extends Node3D
 class_name PlayerUnit
 
-##region REFERENCES
+#region REFERENCES
 
 @export var Nya:NyaOverworldUnit
 
+@export var Hud:HUD
 @export var state_machine:FiniteStateMachine
 
+#region Action Menu buttons
 @onready var move_button:Button = Nya.ActionMenu.Move_Button
-
+#endregion
+#endregion
 #@export_category("Resource Related")
 #
 ##The player's data custom resource
@@ -26,7 +29,14 @@ class_name PlayerUnit
 #
 #
 ##region  GLOBAL VARIABLES
-#
+
+#region Player Position
+
+#The room on which the player currently is
+var current_room:RegularRoom
+
+#The room on which the player plans to move to.
+var target_room:RegularRoom
 ##region METADATA player information
 #
 ##If the player isn't on this mode, events shouldn't trigger.

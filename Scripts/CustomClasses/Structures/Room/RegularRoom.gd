@@ -125,3 +125,9 @@ func _ready() -> void:
 		##await get_tree().create_timer(0.5).timeout
 	##DialogueFinished.emit()
 	##NodBus.event_text_box.hide()
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	var player:PlayerUnit = body
+	player.current_room = self
+	player.Hud.coordinate_label.text = name

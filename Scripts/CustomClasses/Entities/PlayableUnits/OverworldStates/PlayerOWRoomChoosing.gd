@@ -3,11 +3,17 @@ class_name PlayerOverworldRoomChoosing
 
 #region References
 @onready var Nya:NyaOverworldUnit
+@export var raycast:RayCast3D
 #endregion
+
 #region GLOBAL VARIABLES
 
 # Rotation speed in degrees per action
 @export var turn_duration: float = 1.0  # Duration of rotation animation
+
+
+
+var initial_rotation 
 #endregion
 
 #region FUNCTIONS
@@ -16,17 +22,28 @@ func _ready() -> void:
 	Nya = state_owner.Nya
 
 func Enter():
-	pass
+	initial_rotation = state_owner.rotation_degrees.y
 
 func Update(_delta):
+	#region Input listener
 	if Input.is_action_just_released("OverworldTurnLeft"):
 		turn_left()
 	elif Input.is_action_just_released("OverworldTurnRight"):
 		turn_right()
 	elif Input.is_action_just_released("OverworldNegate"):
 		Nya.NyaFSM.force_change_state("InMenu")
+		state_owner.rotation_degrees.y = initial_rotation
 		await DialogueMan2.dialogue_finished
 		state_transition.emit(self,"Inmenu")
+#endregion
+
+	if raycast.is_colliding():
+		state_owner.target_room = raycast.get_collider().get_parent()
+		print("target_room: ", state_owner.target_room)
+	else:
+		print("No room there")
+
+
 
 func turn_left():
 	start_tween(90)  # Rotate left (counterclockwise)

@@ -2,9 +2,11 @@ extends State
 class_name NyaOverworldChoosingRoom
 
 #region REFERENCES
+@export var player:PlayerUnit
 @export var dialogue_panel:Panel
 @export var dialogue_box:Label
 @export var dialogue_text:NyaDialogue
+
 #endregion
 
 #region  GLOBAL VARIABLES
@@ -36,4 +38,9 @@ func Enter():
 	DialogueMan2.show_dialogue(chosen_dialogue,dialogue_box)
 	await  DialogueMan2.dialogue_finished
 	dialogue_panel.hide()
+
+func Update(_delta):
+	dialogue_panel.show()
+	dialogue_box.text = player.target_room.name
+
 #endregion

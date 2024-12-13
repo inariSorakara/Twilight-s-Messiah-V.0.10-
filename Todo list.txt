@@ -10,10 +10,6 @@
 
 #Primary things:
 	#Continue with both the player's and Nya's state machines.
-	#When the player goes from Choosing room to Inmenu, reset the player's rotation to the state it was before entering.
-	#Implement on the player script the current room variable and target room variable.
-	#Make it so, when the player's body enters a room, the room area has a reference of the room itself become
-	the player's current room.
 	#While choosing room, find a way to make the room the player is looking towards the "target room" variable (Very probably will be done with a raycast 3D)
 	#If there's no room, point that out in the Nya's notification.
 	#Have nya indicate the target room or if there's no room there.
@@ -27,3 +23,4 @@
 				#Create a "Turn end method" and have it run after moving the player FOR NOW (It will later happen after the event happens)
 #Secondary things:
 	#Make the torches actually emit light
+	#Have it so the walls that lead nowhere don't have doors.

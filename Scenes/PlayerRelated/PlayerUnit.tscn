@@ -10,25 +10,17 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1waei"]
 
-[node name="PlayerUnit" type="Node3D" node_paths=PackedStringArray("Nya", "state_machine")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+[node name="PlayerBody" type="CharacterBody3D" node_paths=PackedStringArray("Nya", "Hud", "state_machine")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 script = ExtResource("1_48ics")
-Nya = NodePath("PlayerBody/NyaOverworldUnit")
+Nya = NodePath("Interface/NyaOverworldUnit")
+Hud = NodePath("Interface/HUD")
 state_machine = NodePath("FiniteStateMachine")
 
-[node name="PlayerBody" type="CharacterBody3D" parent="."]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
-
-[node name="PlayerShape" type="CollisionShape3D" parent="PlayerBody"]
+[node name="PlayerShape" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_1waei")
 
-[node name="NyaOverworldUnit" parent="PlayerBody" instance=ExtResource("5_l7q6p")]
-offset_left = -0.5
-offset_top = 0.04
-offset_right = -0.5
-offset_bottom = 0.04
-
-[node name="PlayerCamera" type="Camera3D" parent="PlayerBody"]
+[node name="PlayerCamera" type="Camera3D" parent="."]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
 current = true
 fov = 78.0
@@ -45,8 +37,9 @@ state_owner = NodePath("../..")
 script = ExtResource("5_af0au")
 state_owner = NodePath("../..")
 
-[node name="Choosing" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("state_owner")]
+[node name="Choosing" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("raycast", "state_owner")]
 script = ExtResource("3_24bjv")
+raycast = NodePath("../../RayCast3D")
 state_owner = NodePath("../..")
 
 [node name="Interface" type="CanvasLayer" parent="."]
@@ -54,3 +47,9 @@ state_owner = NodePath("../..")
 [node name="HUD" parent="Interface" instance=ExtResource("6_o4hwe")]
 
 [node name="NyaOverworldUnit" parent="Interface" instance=ExtResource("5_l7q6p")]
+child_nodes = Array[NodePath]([NodePath("/root/@EditorNode@16886/@Panel@13/@VBoxContainer@14/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@25/DockVSplitCenter/@VSplitContainer@52/@VBoxContainer@53/@PanelContainer@98/MainScreen/@CanvasItemEditor@9272/@VSplitContainer@9094/@HSplitContainer@9096/@HSplitContainer@9098/@Control@9099/@SubViewportContainer@9100/@SubViewport@9101/PlayerBody/Interface/NyaOverworldUnit/NyaSprite"), NodePath("/root/@EditorNode@16886/@Panel@13/@VBoxContainer@14/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@25/DockVSplitCenter/@VSplitContainer@52/@VBoxContainer@53/@PanelContainer@98/MainScreen/@CanvasItemEditor@9272/@VSplitContainer@9094/@HSplitContainer@9096/@HSplitContainer@9098/@Control@9099/@SubViewportContainer@9100/@SubViewport@9101/PlayerBody/Interface/NyaOverworldUnit/ActionMenu"), NodePath("/root/@EditorNode@16886/@Panel@13/@VBoxContainer@14/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@25/DockVSplitCenter/@VSplitContainer@52/@VBoxContainer@53/@PanelContainer@98/MainScreen/@CanvasItemEditor@9272/@VSplitContainer@9094/@HSplitContainer@9096/@HSplitContainer@9098/@Control@9099/@SubViewportContainer@9100/@SubViewport@9101/PlayerBody/Interface/NyaOverworldUnit/NyaDialogueBox"), NodePath("/root/@EditorNode@16886/@Panel@13/@VBoxContainer@14/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@25/DockVSplitCenter/@VSplitContainer@52/@VBoxContainer@53/@PanelContainer@98/MainScreen/@CanvasItemEditor@9272/@VSplitContainer@9094/@HSplitContainer@9096/@HSplitContainer@9098/@Control@9099/@SubViewportContainer@9100/@SubViewport@9101/PlayerBody/Interface/NyaOverworldUnit/NyaFSM"), NodePath("/root/@EditorNode@16886/@Panel@13/@VBoxContainer@14/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@25/DockVSplitCenter/@VSplitContainer@52/@VBoxContainer@53/@PanelContainer@98/MainScreen/@CanvasItemEditor@9272/@VSplitContainer@9094/@HSplitContainer@9096/@HSplitContainer@9098/@Control@9099/@SubViewportContainer@9100/@SubViewport@9101/PlayerBody/Interface/NyaOverworldUnit/DATA")])
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.539923, 0)
+target_position = Vector3(0, -1, -90)
+collide_with_areas = true
