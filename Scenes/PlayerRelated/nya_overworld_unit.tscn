@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://fk0rn52wwwes"]
+[gd_scene load_steps=13 format=3 uid="uid://fk0rn52wwwes"]
 
 [ext_resource type="Script" path="res://Scripts/CustomClasses/Entities/PlayableUnits/nya_overworld_unit.gd" id="1_dnjaf"]
 [ext_resource type="Texture2D" uid="uid://gx2gxx34kga1" path="res://Assets/Art/NPCs/Nya.png" id="1_fvdtx"]
@@ -14,6 +14,13 @@
 [sub_resource type="LabelSettings" id="LabelSettings_befc4"]
 font = ExtResource("3_r0fy1")
 font_size = 15
+
+[sub_resource type="LabelSettings" id="LabelSettings_xujv8"]
+font = ExtResource("3_r0fy1")
+font_size = 64
+font_color = Color(0, 0.972549, 0.721569, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 
 [node name="NyaOverworldUnit" type="Control" node_paths=PackedStringArray("NyaSprite", "ActionMenu", "NyaFSM")]
 layout_mode = 3
@@ -31,9 +38,9 @@ NyaFSM = NodePath("NyaFSM")
 [node name="NyaSprite" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = 42.0
-offset_top = 157.0
+offset_top = 176.578
 offset_right = 162.0
-offset_bottom = 277.0
+offset_bottom = 296.578
 texture = ExtResource("1_fvdtx")
 expand_mode = 1
 flip_h = true
@@ -47,6 +54,7 @@ offset_right = -348.0
 offset_bottom = -116.0
 
 [node name="NyaDialogueBox" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.245714
@@ -87,14 +95,37 @@ dialogue_box = NodePath("../../NyaDialogueBox/MarginContainer/NyaDialogue")
 dialogue_text = NodePath("../../DATA/NyaDialogue")
 state_owner = NodePath("../..")
 
-[node name="ChoosingRoom" type="Node" parent="NyaFSM" node_paths=PackedStringArray("dialogue_panel", "dialogue_box", "dialogue_text", "state_owner")]
+[node name="ChoosingRoom" type="Node" parent="NyaFSM" node_paths=PackedStringArray("dialogue_panel", "dialogue_box", "dialogue_text", "room_label", "room_panel", "state_owner")]
 script = ExtResource("8_kmnmq")
 dialogue_panel = NodePath("../../NyaDialogueBox")
 dialogue_box = NodePath("../../NyaDialogueBox/MarginContainer/NyaDialogue")
 dialogue_text = NodePath("../../DATA/NyaDialogue")
+room_label = NodePath("../../RoomSign/MarginContainer/RoomLabel")
+room_panel = NodePath("../../RoomSign")
 state_owner = NodePath("../..")
 
 [node name="DATA" type="Node" parent="."]
 
 [node name="NyaDialogue" type="Node" parent="DATA"]
 script = ExtResource("7_s6ag6")
+
+[node name="RoomSign" type="Panel" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.721569)
+layout_mode = 0
+offset_left = 284.0
+offset_top = 192.0
+offset_right = 455.0
+offset_bottom = 317.0
+
+[node name="MarginContainer" type="MarginContainer" parent="RoomSign"]
+layout_mode = 0
+offset_right = 172.0
+offset_bottom = 124.0
+
+[node name="RoomLabel" type="Label" parent="RoomSign/MarginContainer"]
+layout_mode = 2
+text = "H1"
+label_settings = SubResource("LabelSettings_xujv8")
+horizontal_alignment = 1
+vertical_alignment = 1

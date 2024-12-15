@@ -77,13 +77,14 @@ var target_room:RegularRoom
 ##func _on_event_finished():
 	###Changes the current state to "MoveMenu" once the event is finished. On future versions this should change to Idle.
 	##FSM.force_change_state("Idle")
-#
-##region FUNCTIONS
-#
-##Called when the node is ready
-#func _ready() -> void:
-	#pass
-#
+
+
+#region FUNCTIONS
+
+#Called when the node is ready
+func _ready() -> void:
+	Nya.NyaFSM.get_node("ChoosingRoom").player = self
+
 ##region Stats set up functions
 ##Call to set up the health values of a player
 #func set_up_health():

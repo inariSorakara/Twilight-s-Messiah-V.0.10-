@@ -6,7 +6,8 @@ class_name NyaOverworldChoosingRoom
 @export var dialogue_panel:Panel
 @export var dialogue_box:Label
 @export var dialogue_text:NyaDialogue
-
+@export var room_label:Label
+@export var room_panel:Panel
 #endregion
 
 #region  GLOBAL VARIABLES
@@ -40,7 +41,15 @@ func Enter():
 	dialogue_panel.hide()
 
 func Update(_delta):
-	dialogue_panel.show()
-	dialogue_box.text = player.target_room.name
+	await get_tree().create_timer(2).timeout
+	if room_panel.visible == false:
+		room_panel.show()
+	var player_target_room = player.target_room
+	if player_target_room != null:
+		room_label.text = player_target_room.name
+	else:
+		room_label.text = "X"
+	#room_label.text = player_target_room.name
+	#dialogue_box.text = player.target_room.name
 
 #endregion

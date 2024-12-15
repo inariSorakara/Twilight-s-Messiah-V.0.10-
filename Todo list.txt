@@ -10,9 +10,9 @@
 
 #Primary things:
 	#Continue with both the player's and Nya's state machines.
-	#While choosing room, find a way to make the room the player is looking towards the "target room" variable (Very probably will be done with a raycast 3D)
-	#If there's no room, point that out in the Nya's notification.
-	#Have nya indicate the target room or if there's no room there.
+	#Create a new state for both state machines. Something akin to "MovementConfirming" or something like that
+	#Suggest the player to press either confirm or negate.
+	#If they negate go back to choosing, if they confirm, enter the (new state)"Moving" state for both state machines 
 	#After the player chooses a room:
 		#If there's no room there, have Nya inform so.
 		#If there's a target room:
@@ -24,3 +24,4 @@
 #Secondary things:
 	#Make the torches actually emit light
 	#Have it so the walls that lead nowhere don't have doors.
+	#Make it so the player rotates back into the initial y.degrees instead of jumping to it.

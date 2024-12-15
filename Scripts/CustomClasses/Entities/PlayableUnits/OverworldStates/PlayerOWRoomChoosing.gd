@@ -39,9 +39,8 @@ func Update(_delta):
 
 	if raycast.is_colliding():
 		state_owner.target_room = raycast.get_collider().get_parent()
-		print("target_room: ", state_owner.target_room)
 	else:
-		print("No room there")
+		state_owner.target_room = null
 
 
 
