@@ -4,6 +4,7 @@ class_name PlayerOverworldRoomChoosing
 #region References
 @onready var Nya:NyaOverworldUnit
 @export var raycast:RayCast3D
+@export var NyaRoomSign:Panel
 #endregion
 
 #region GLOBAL VARIABLES
@@ -23,6 +24,7 @@ func _ready() -> void:
 
 func Enter():
 	initial_rotation = state_owner.rotation_degrees.y
+	NyaRoomSign.show()
 
 func Update(_delta):
 	#region Input listener
@@ -30,6 +32,8 @@ func Update(_delta):
 		turn_left()
 	elif Input.is_action_just_released("OverworldTurnRight"):
 		turn_right()
+	elif Input.is_action_just_released("OverworldConfirm"):
+		state_transition.emit(self,"MovementConfirming")
 	elif Input.is_action_just_released("OverworldNegate"):
 		Nya.NyaFSM.force_change_state("InMenu")
 		state_owner.rotation_degrees.y = initial_rotation
@@ -62,4 +66,7 @@ func start_tween(direction: float):
 		target_rotation,  # Final rotation value
 		turn_duration  # Duration of the tween
 	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+
+func Exit():
+	NyaRoomSign.visible = false
 #endregion

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://k47uqnsfqaq"]
+[gd_scene load_steps=12 format=3 uid="uid://k47uqnsfqaq"]
 
 [ext_resource type="Script" path="res://Scripts/CustomClasses/Entities/PlayableUnits/playable_character.gd" id="1_48ics"]
 [ext_resource type="Script" path="res://Scripts/CustomClasses/FiniteStateMachine/finite_state_machine.gd" id="1_d2hjn"]
@@ -7,6 +7,9 @@
 [ext_resource type="Script" path="res://Scripts/CustomClasses/Entities/PlayableUnits/OverworldStates/PlayerOWInMenu.gd" id="5_af0au"]
 [ext_resource type="PackedScene" uid="uid://fk0rn52wwwes" path="res://Scenes/PlayerRelated/nya_overworld_unit.tscn" id="5_l7q6p"]
 [ext_resource type="PackedScene" uid="uid://cx7nwiyqoipux" path="res://Scenes/MenusAndScreens/InterfaceRelated/HUD.tscn" id="6_o4hwe"]
+[ext_resource type="Script" path="res://Scripts/CustomClasses/Entities/PlayableUnits/OverworldStates/PlayerOWRoomConfirming.gd" id="6_uoaa8"]
+[ext_resource type="Script" path="res://Scripts/CustomClasses/Entities/PlayableUnits/OverworldStates/PlayerOWMoving.gd" id="7_roc5b"]
+[ext_resource type="Script" path="res://Scripts/CustomClasses/Entities/PlayableUnits/NyaOverworldStates/NyaOverwoldMoving.gd" id="9_ehjjx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1waei"]
 
@@ -37,10 +40,18 @@ state_owner = NodePath("../..")
 script = ExtResource("5_af0au")
 state_owner = NodePath("../..")
 
-[node name="Choosing" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("raycast", "state_owner")]
+[node name="Choosing" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("raycast", "NyaRoomSign", "state_owner")]
 script = ExtResource("3_24bjv")
 raycast = NodePath("../../RayCast3D")
+NyaRoomSign = NodePath("../../Interface/NyaOverworldUnit/RoomSign")
 state_owner = NodePath("../..")
+
+[node name="MovementConfirming" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("nya")]
+script = ExtResource("6_uoaa8")
+nya = NodePath("../../Interface/NyaOverworldUnit")
+
+[node name="Moving" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("7_roc5b")
 
 [node name="Interface" type="CanvasLayer" parent="."]
 
@@ -48,7 +59,40 @@ state_owner = NodePath("../..")
 
 [node name="NyaOverworldUnit" parent="Interface" instance=ExtResource("5_l7q6p")]
 
+[node name="NyaSprite" parent="Interface/NyaOverworldUnit" index="0"]
+offset_top = 268.092
+offset_bottom = 388.092
+
+[node name="NyaDialogueBox" parent="Interface/NyaOverworldUnit" index="2"]
+offset_left = 0.000198364
+offset_top = 96.0002
+offset_right = 0.000213623
+offset_bottom = 96.0002
+
+[node name="MarginContainer" parent="Interface/NyaOverworldUnit/NyaDialogueBox" index="0"]
+offset_top = 7.0
+offset_bottom = 48.0
+theme_override_constants/margin_bottom = 10
+
+[node name="NyaDialogue" parent="Interface/NyaOverworldUnit/NyaDialogueBox/MarginContainer" index="0"]
+custom_minimum_size = Vector2(170, 31)
+autowrap_mode = 2
+
+[node name="ConfirmingRoom" parent="Interface/NyaOverworldUnit/NyaFSM" index="3" node_paths=PackedStringArray("player", "dialogue_panel", "dialogue_box", "dialogue_text", "room_label", "room_panel", "state_owner")]
+player = NodePath("../../../..")
+dialogue_panel = NodePath("../../NyaDialogueBox")
+dialogue_box = NodePath("../../NyaDialogueBox/MarginContainer/NyaDialogue")
+dialogue_text = NodePath("../../DATA/NyaDialogue")
+room_label = NodePath("../../RoomSign/MarginContainer/RoomLabel")
+room_panel = NodePath("../../RoomSign")
+state_owner = NodePath("../..")
+
+[node name="Moving" type="Node" parent="Interface/NyaOverworldUnit/NyaFSM" index="4"]
+script = ExtResource("9_ehjjx")
+
 [node name="RayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.539923, 0)
 target_position = Vector3(0, -1, -90)
 collide_with_areas = true
+
+[editable path="Interface/NyaOverworldUnit"]

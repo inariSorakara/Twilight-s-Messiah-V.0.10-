@@ -1,5 +1,5 @@
 extends State
-class_name NyaOverworldChoosingRoom
+class_name NyaOverworldConfirmingRoom
 
 #region REFERENCES
 @export var player:PlayerUnit
@@ -34,25 +34,19 @@ func _ready() -> void:
 func Enter():
 	dialogue_panel.show()
 
-	var choosing_room_dialogue:Dictionary = dialogue_text.state_dialogues.get("Move_Action")
+	var choosing_room_dialogue:Dictionary = dialogue_text.state_dialogues.get("Confirming_Room")
 	var dialogue_randomizer:int = randi_range(0,2)
 	var chosen_dialogue:Array = choosing_room_dialogue.get(str(dialogue_randomizer))
 
 	DialogueMan2.show_dialogue(chosen_dialogue,dialogue_box)
 
 	await  DialogueMan2.dialogue_finished
-
+	
+	chosen_dialogue = dialogue_text.player_notifications.get("Confirming_Message").get("0")
+	DialogueMan2.show_dialogue(chosen_dialogue,dialogue_box)
+	
+	await DialogueMan2.dialogue_finished
+	
 	dialogue_panel.hide()
 
-func Update(_delta):
-	var player_target_room = player.target_room
-	if player_target_room != null:
-		room_label.text = player_target_room.name
-	else:
-		room_label.text = "X"
-	if Input.is_action_just_pressed("OverworldConfirm"):
-		state_transition.emit(self,"ConfirmingRoom")
-
-func Exit():
-	pass
 #endregion

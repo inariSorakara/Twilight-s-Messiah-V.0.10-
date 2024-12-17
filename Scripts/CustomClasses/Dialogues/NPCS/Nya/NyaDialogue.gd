@@ -3,6 +3,7 @@ class_name NyaDialogue
 
 #region  GLOBAL VARIABLES
 
+#Things Nya says depending on the state
 var state_dialogues:Dictionary = {"Idle":{"0": ["Well", "Now what?"],
 "1":["Let's get moving"],
 "2": ["What now?"]},
@@ -10,6 +11,7 @@ var state_dialogues:Dictionary = {"Idle":{"0": ["Well", "Now what?"],
 "Move_Action":{"0":["Where are we going?"],
 "1": ["Finally"],
 "2": ["Onwards"]},
+"Confirming_Room": {"0":["You sure?"], "1":["Here?"],"2":["On it!"]},
 "Soma_Action":"",
 "Arts_Action":"",
 "Inventory_Action":"",
@@ -18,4 +20,7 @@ var state_dialogues:Dictionary = {"Idle":{"0": ["Well", "Now what?"],
 "Choosing_Direction":"",
 "Moving":"",
 "Event_Found":""}
+
+#Player notifications
+var player_notifications:Dictionary = {"Confirming_Message":{"0": ["Press Confirm or Negate"]}}
 #endregion

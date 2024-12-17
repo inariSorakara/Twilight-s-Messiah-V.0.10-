@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://fk0rn52wwwes"]
+[gd_scene load_steps=14 format=3 uid="uid://fk0rn52wwwes"]
 
 [ext_resource type="Script" path="res://Scripts/CustomClasses/Entities/PlayableUnits/nya_overworld_unit.gd" id="1_dnjaf"]
 [ext_resource type="Texture2D" uid="uid://gx2gxx34kga1" path="res://Assets/Art/NPCs/Nya.png" id="1_fvdtx"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bsuuq045fonku" path="res://Scenes/MenusAndScreens/InterfaceRelated/action_menu.tscn" id="8_bubxe"]
 [ext_resource type="Script" path="res://Scripts/CustomClasses/Entities/PlayableUnits/NyaOverworldStates/NyaOverworldInMenu.gd" id="8_jl1ql"]
 [ext_resource type="Script" path="res://Scripts/CustomClasses/Entities/PlayableUnits/NyaOverworldStates/NyaOverworldChoosingRoom.gd" id="8_kmnmq"]
+[ext_resource type="Script" path="res://Scripts/CustomClasses/Entities/PlayableUnits/NyaOverworldStates/NyaOverworldConfirmingRoom.gd" id="10_not3c"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_befc4"]
 font = ExtResource("3_r0fy1")
@@ -38,9 +39,9 @@ NyaFSM = NodePath("NyaFSM")
 [node name="NyaSprite" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = 42.0
-offset_top = 176.578
+offset_top = 241.695
 offset_right = 162.0
-offset_bottom = 296.578
+offset_bottom = 361.695
 texture = ExtResource("1_fvdtx")
 expand_mode = 1
 flip_h = true
@@ -103,6 +104,10 @@ dialogue_text = NodePath("../../DATA/NyaDialogue")
 room_label = NodePath("../../RoomSign/MarginContainer/RoomLabel")
 room_panel = NodePath("../../RoomSign")
 state_owner = NodePath("../..")
+
+[node name="ConfirmingRoom" type="Node" parent="NyaFSM" node_paths=PackedStringArray("roomsign")]
+script = ExtResource("10_not3c")
+roomsign = NodePath("../../RoomSign")
 
 [node name="DATA" type="Node" parent="."]
 
