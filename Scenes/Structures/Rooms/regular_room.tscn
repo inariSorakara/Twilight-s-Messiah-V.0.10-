@@ -1,54 +1,17 @@
-[gd_scene load_steps=34 format=4 uid="uid://chrncrkuahi4v"]
+[gd_scene load_steps=18 format=4 uid="uid://chrncrkuahi4v"]
 
-[ext_resource type="Texture2D" uid="uid://dn126jxxhd1aw" path="res://Assets/Meshes/Structures/Rooms/textures/77_albedo.png" id="1_nv07c"]
 [ext_resource type="Script" path="res://Scripts/CustomClasses/Structures/Room/RegularRoom.gd" id="1_v2fcy"]
-[ext_resource type="Texture2D" uid="uid://d2vqa7wihrepc" path="res://Assets/Meshes/Structures/Rooms/textures/77_albedo2.png" id="2_tatab"]
 [ext_resource type="Resource" uid="uid://hf2n0ivseyp2" path="res://Assets/CustomResources/Structures/Rooms/RegularRoom.tres" id="2_xwsm3"]
-[ext_resource type="Texture2D" uid="uid://dc3ggx6uv6cux" path="res://Assets/Meshes/Structures/Rooms/textures/77_albedo3.png" id="3_8ib45"]
-[ext_resource type="Texture2D" uid="uid://ctton61qjx83f" path="res://Assets/Meshes/Structures/Rooms/textures/77_albedo4.png" id="4_1diyr"]
 [ext_resource type="Texture2D" uid="uid://d2rlwssjv8l2c" path="res://Assets/Meshes/Structures/Rooms/NoDoorWall_3.png" id="4_o6dm4"]
 [ext_resource type="Texture2D" uid="uid://dkeqpttotbn4x" path="res://Assets/Meshes/Structures/Rooms/textures/112_albedo.png" id="5_sh1w2"]
 [ext_resource type="Texture2D" uid="uid://cwosntklg70w4" path="res://Assets/Meshes/Structures/Rooms/textures/112_albedo2.png" id="6_46cy5"]
 [ext_resource type="Script" path="res://Scripts/CustomClasses/Position3D/position_3d.gd" id="9_85pk4"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q1a0g"]
-resource_name = "73"
-transparency = 4
-cull_mode = 2
-albedo_texture = ExtResource("1_nv07c")
-texture_filter = 2
+[sub_resource type="BoxShape3D" id="BoxShape3D_yedrq"]
+size = Vector3(1.08203, 0.981567, 1.11566)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_lgh0d"]
-_surfaces = [{
-"aabb": AABB(-0.5, -0.5, 0, 1, 1, 1e-05),
-"format": 34359742465,
-"index_count": 6,
-"index_data": PackedByteArray("AQAAAAIAAwABAAIA"),
-"name": "73",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 4,
-"vertex_data": PackedByteArray("AAAAvwAAAL8AAAAAAAAAPwAAAL8AAAAAAAAAvwAAAD8AAAAAAAAAPwAAAD8AAAAA")
-}]
-blend_shape_mode = 0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_h4w52"]
-resource_name = "regular_room_mesh2"
-_surfaces = [{
-"aabb": AABB(-0.5, -0.5, 0, 1, 1, 1e-05),
-"attribute_data": PackedByteArray("AAAAAAAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAA="),
-"format": 34359742487,
-"index_count": 6,
-"index_data": PackedByteArray("AQAAAAIAAwABAAIA"),
-"material": SubResource("StandardMaterial3D_q1a0g"),
-"name": "73",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 4,
-"vertex_data": PackedByteArray("AAAAvwAAAL8AAAAAAAAAPwAAAL8AAAAAAAAAvwAAAD8AAAAAAAAAPwAAAD8AAAAA/3//f////7//f/9/////v/9//3////+//3//f////78=")
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_lgh0d")
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ipfep"]
+size = Vector2(6, 6)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wk3jp"]
 resource_name = "77"
@@ -88,123 +51,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_l5e8n")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rg2k4"]
-resource_name = "78"
-transparency = 4
-cull_mode = 2
-albedo_texture = ExtResource("2_tatab")
-texture_filter = 2
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_i2745"]
-_surfaces = [{
-"aabb": AABB(-0.5, -0.5, 0, 1, 1, 1e-05),
-"format": 34359742465,
-"index_count": 6,
-"index_data": PackedByteArray("AQAAAAIAAwABAAIA"),
-"name": "78",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 4,
-"vertex_data": PackedByteArray("AAAAvwAAAL8AAAAAAAAAPwAAAL8AAAAAAAAAvwAAAD8AAAAAAAAAPwAAAD8AAAAA")
-}]
-blend_shape_mode = 0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_lj66m"]
-resource_name = "regular_room_mesh3"
-_surfaces = [{
-"aabb": AABB(-0.5, -0.5, 0, 1, 1, 1e-05),
-"attribute_data": PackedByteArray("AAAAAAAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAA="),
-"format": 34359742487,
-"index_count": 6,
-"index_data": PackedByteArray("AQAAAAIAAwABAAIA"),
-"material": SubResource("StandardMaterial3D_rg2k4"),
-"name": "78",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 4,
-"vertex_data": PackedByteArray("AAAAvwAAAL8AAAAAAAAAPwAAAL8AAAAAAAAAvwAAAD8AAAAAAAAAPwAAAD8AAAAA/3//f////7//f/9/////v/9//3////+//3//f////78=")
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_i2745")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7wh3y"]
-resource_name = "82"
-transparency = 4
-cull_mode = 2
-albedo_texture = ExtResource("3_8ib45")
-texture_filter = 2
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_wdwee"]
-_surfaces = [{
-"aabb": AABB(-0.5, -0.5, 0, 1, 1, 1e-05),
-"format": 34359742465,
-"index_count": 6,
-"index_data": PackedByteArray("AQAAAAIAAwABAAIA"),
-"name": "82",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 4,
-"vertex_data": PackedByteArray("AAAAvwAAAL8AAAAAAAAAPwAAAL8AAAAAAAAAvwAAAD8AAAAAAAAAPwAAAD8AAAAA")
-}]
-blend_shape_mode = 0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_fhkk2"]
-resource_name = "regular_room_mesh4"
-_surfaces = [{
-"aabb": AABB(-0.5, -0.5, 0, 1, 1, 1e-05),
-"attribute_data": PackedByteArray("AAAAAAAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAA="),
-"format": 34359742487,
-"index_count": 6,
-"index_data": PackedByteArray("AQAAAAIAAwABAAIA"),
-"material": SubResource("StandardMaterial3D_7wh3y"),
-"name": "82",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 4,
-"vertex_data": PackedByteArray("AAAAvwAAAL8AAAAAAAAAPwAAAL8AAAAAAAAAvwAAAD8AAAAAAAAAPwAAAD8AAAAA/3//f////7//f/9/////v/9//3////+//3//f////78=")
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_wdwee")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ggg0q"]
-resource_name = "77"
-transparency = 4
-cull_mode = 2
-albedo_texture = ExtResource("4_1diyr")
-texture_filter = 2
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_lawha"]
-_surfaces = [{
-"aabb": AABB(-0.5, -0.5, 0, 1, 1, 1e-05),
-"format": 34359742465,
-"index_count": 6,
-"index_data": PackedByteArray("AQAAAAIAAwABAAIA"),
-"name": "77",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 4,
-"vertex_data": PackedByteArray("AAAAvwAAAL8AAAAAAAAAPwAAAL8AAAAAAAAAvwAAAD8AAAAAAAAAPwAAAD8AAAAA")
-}]
-blend_shape_mode = 0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_tl2me"]
-resource_name = "regular_room_mesh5"
-_surfaces = [{
-"aabb": AABB(-0.5, -0.5, 0, 1, 1, 1e-05),
-"attribute_data": PackedByteArray("AAAAAAAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAA="),
-"format": 34359742487,
-"index_count": 6,
-"index_data": PackedByteArray("AQAAAAIAAwABAAIA"),
-"material": SubResource("StandardMaterial3D_ggg0q"),
-"name": "77",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 4,
-"vertex_data": PackedByteArray("AAAAvwAAAL8AAAAAAAAAPwAAAL8AAAAAAAAAvwAAAD8AAAAAAAAAPwAAAD8AAAAA/3//f////7//f/9/////v/9//3////+//3//f////78=")
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_lawha")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f4fsa"]
 resource_name = "108"
@@ -284,76 +130,11 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_d2j0u")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_yedrq"]
-size = Vector3(1.08203, 0.981567, 1.11566)
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ipfep"]
-size = Vector2(6, 6)
-
-[node name="regular_room" type="Node3D"]
+[node name="regular_room" type="Node3D" node_paths=PackedStringArray("middle_of_room")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.66442, -2.98023e-08, 0.521085)
 script = ExtResource("1_v2fcy")
 room_custom_resource = ExtResource("2_xwsm3")
-
-[node name="Walls" type="Node3D" parent="."]
-
-[node name="wall1" type="MeshInstance3D" parent="Walls"]
-transform = Transform3D(1.016, 0, 0, 0, 0.907002, 0, 0, 0, 0.001, 0.00502735, 0, 0.0765482)
-mesh = SubResource("ArrayMesh_h4w52")
-skeleton = NodePath("")
-
-[node name="NoDoorwall1" type="MeshInstance3D" parent="Walls"]
-transform = Transform3D(1.01, 0, 0, 0, 0.906, 0, 0, 0, 0.001, 0.005, 0, 0.077)
-visible = false
-mesh = SubResource("ArrayMesh_24boy")
-skeleton = NodePath("")
-
-[node name="wall2" type="MeshInstance3D" parent="Walls"]
-transform = Transform3D(-1.65527e-07, 0, 0.001, 0, 0.907002, 0, -1.016, 0, -1.62921e-10, -0.499576, -6.10352e-08, 0.58497)
-mesh = SubResource("ArrayMesh_lj66m")
-skeleton = NodePath("")
-
-[node name="NoDoorwall2" type="MeshInstance3D" parent="Walls"]
-transform = Transform3D(-4.41485e-08, 0, 0.001, 0, 0.906, 0, -1.01, 0, -4.37114e-11, -0.5, 0, 0.585)
-visible = false
-mesh = SubResource("ArrayMesh_24boy")
-skeleton = NodePath("")
-
-[node name="wall3" type="MeshInstance3D" parent="Walls"]
-transform = Transform3D(-1.65527e-07, 0, 0.001, 0, 0.907002, 0, -1.016, 0, -1.62921e-10, 0.515, 0, 0.585)
-mesh = SubResource("ArrayMesh_fhkk2")
-skeleton = NodePath("")
-
-[node name="NoDoorwall3" type="MeshInstance3D" parent="Walls"]
-transform = Transform3D(-4.41485e-08, 0, 0.001, 0, 0.906, 0, -1.01, 0, -4.37114e-11, 0.515, 0, 0.585)
-visible = false
-mesh = SubResource("ArrayMesh_24boy")
-skeleton = NodePath("")
-
-[node name="wall4" type="MeshInstance3D" parent="Walls"]
-transform = Transform3D(1.016, 0, 0, 0, 0.907002, 0, 0, 0, 0.001, 0.000999987, 0, 1.08417)
-mesh = SubResource("ArrayMesh_tl2me")
-skeleton = NodePath("")
-
-[node name="NoDoorwall4" type="MeshInstance3D" parent="Walls"]
-transform = Transform3D(1.01, 0, -1.38778e-17, 0, 0.906, 0, 1.42109e-14, 0, 0.001, 0.001, 0, 1.084)
-visible = false
-mesh = SubResource("ArrayMesh_24boy")
-skeleton = NodePath("")
-
-[node name="Floor" type="Node3D" parent="."]
-
-[node name="Floor" type="MeshInstance3D" parent="Floor"]
-transform = Transform3D(1.01721, 0, 0, 0, 3.61525e-07, 0.001, 0, -1.0109, 3.57628e-10, 0.00652164, -0.456298, 0.583564)
-mesh = SubResource("ArrayMesh_7fdq5")
-skeleton = NodePath("")
-
-[node name="Roof" type="Node3D" parent="."]
-
-[node name="Roof" type="MeshInstance3D" parent="Roof"]
-transform = Transform3D(1.03064, 0, 0, 0, 3.64942e-07, 0.001, 0, -1.02045, 3.57628e-10, 0.01, 0.45, 0.581)
-mesh = SubResource("ArrayMesh_s61kh")
-skeleton = NodePath("")
+middle_of_room = NodePath("Position3D")
 
 [node name="Area3D" type="Area3D" parent="."]
 
@@ -369,5 +150,35 @@ script = ExtResource("9_85pk4")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.4, 0.5)
+
+[node name="NoDoorwall1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.01, 0, 0, 0, 0.906, 0, 0, 0, 0.001, 0.005, 0, 0.077)
+mesh = SubResource("ArrayMesh_24boy")
+skeleton = NodePath("")
+
+[node name="NoDoorwall2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.41485e-08, 0, 0.001, 0, 0.906, 0, -1.01, 0, -4.37114e-11, -0.5, 0, 0.585)
+mesh = SubResource("ArrayMesh_24boy")
+skeleton = NodePath("")
+
+[node name="NoDoorwall3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.41485e-08, 0, 0.001, 0, 0.906, 0, -1.01, 0, -4.37114e-11, 0.515, 0, 0.585)
+mesh = SubResource("ArrayMesh_24boy")
+skeleton = NodePath("")
+
+[node name="NoDoorwall4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.01, 0, -1.38778e-17, 0, 0.906, 0, 1.42109e-14, 0, 0.001, 0.000999987, 0, 1.084)
+mesh = SubResource("ArrayMesh_24boy")
+skeleton = NodePath("")
+
+[node name="Floor2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.01721, 0, 0, 0, 3.61525e-07, 0.001, 0, -1.0109, 3.57628e-10, 0.00652164, -0.456298, 0.583564)
+mesh = SubResource("ArrayMesh_7fdq5")
+skeleton = NodePath("")
+
+[node name="Roof2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.03064, 0, 0, 0, 3.64942e-07, 0.001, 0, -1.02045, 3.57628e-10, 0.00999999, 0.45, 0.581)
+mesh = SubResource("ArrayMesh_s61kh")
+skeleton = NodePath("")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

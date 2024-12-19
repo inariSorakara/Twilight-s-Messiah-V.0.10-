@@ -8,6 +8,7 @@ class_name NyaOverworldChoosingRoom
 @export var dialogue_text:NyaDialogue
 @export var room_label:Label
 @export var room_panel:Panel
+@export var door_sprite:TextureRect
 #endregion
 
 #region  GLOBAL VARIABLES
@@ -47,8 +48,10 @@ func Enter():
 func Update(_delta):
 	var player_target_room = player.target_room
 	if player_target_room != null:
+		door_sprite.visible = true
 		room_label.text = player_target_room.name
 	else:
+		door_sprite.visible = false
 		room_label.text = "X"
 	if Input.is_action_just_pressed("OverworldConfirm"):
 		state_transition.emit(self,"ConfirmingRoom")

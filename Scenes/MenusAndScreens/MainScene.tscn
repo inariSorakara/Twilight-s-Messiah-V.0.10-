@@ -1,14 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://d321ih1gmu7ld"]
+[gd_scene load_steps=7 format=3 uid="uid://d321ih1gmu7ld"]
 
 [ext_resource type="Script" path="res://Scripts/CustomClasses/Managers/GameManager.gd" id="1_3hbld"]
 [ext_resource type="Script" path="res://Scripts/CustomClasses/Managers/SceneManager/scene_manager.gd" id="1_aorkm"]
 [ext_resource type="Script" path="res://Scripts/CustomClasses/Managers/PlayerManager/player_manager.gd" id="3_65m45"]
 [ext_resource type="Script" path="res://Scripts/CustomClasses/Managers/DialogueManager/dialogueManager.gd" id="4_v4vdd"]
+[ext_resource type="Script" path="res://Scripts/CustomClasses/Managers/AnimationManager/animation_manager.gd" id="5_xmo88"]
+[ext_resource type="PackedScene" uid="uid://c61bakl58uujy" path="res://Scenes/Animations/fade_in_fade_out.tscn" id="6_lrmsr"]
 
-[node name="Main" type="Node3D" node_paths=PackedStringArray("scene_manager", "player_manager") groups=["Players Alive", "Players Dead"]]
+[node name="Main" type="Node3D" node_paths=PackedStringArray("scene_manager", "player_manager", "animation_manager") groups=["Players Alive", "Players Dead"]]
 script = ExtResource("1_3hbld")
 scene_manager = NodePath("SceneManager")
 player_manager = NodePath("PlayerManager")
+animation_manager = NodePath("AnimationManager")
 
 [node name="SceneManager" type="Node" parent="."]
 script = ExtResource("1_aorkm")
@@ -18,3 +21,9 @@ script = ExtResource("3_65m45")
 
 [node name="DialogueManager" type="Node" parent="."]
 script = ExtResource("4_v4vdd")
+
+[node name="AnimationManager" type="Node" parent="." node_paths=PackedStringArray("transition")]
+script = ExtResource("5_xmo88")
+transition = NodePath("FadeIn_FadeOut")
+
+[node name="FadeIn_FadeOut" parent="AnimationManager" instance=ExtResource("6_lrmsr")]

@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 DialogueMan2="*res://Scripts/CustomClasses/Managers/DialogueManager/dialogueManager.gd"
+AniMan="*res://Scripts/CustomClasses/Managers/AnimationManager/animation_manager.gd"
 
 [display]
 

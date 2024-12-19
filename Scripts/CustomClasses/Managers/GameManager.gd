@@ -6,6 +6,7 @@ class_name GameManager
 @export_category("Managers")
 @export var scene_manager:SceneManager
 @export var player_manager:PlayerManager
+@export var animation_manager:AnimationManager
 #@export var event_manager:EventManager
 #endregion
 
@@ -64,6 +65,10 @@ func start_game():
 	
 	#Let's get the players on the field.
 	player_manager.spawn_players(player_packed_scene,1)
+	
+	#Let's force the animation manager to recognize it's children.
+	for child in animation_manager.get_children():
+		child.reparent(AniMan)
 	
 	##Let's give time for the players to get ready
 	#await get_tree().process_frame

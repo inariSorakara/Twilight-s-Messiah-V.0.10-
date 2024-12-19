@@ -8,6 +8,7 @@ class_name RegularRoom
 #region  GLOBAL VARIABLES
 
 @export var room_custom_resource:RegularRoomData
+@export var middle_of_room:Position3D
 #endregion
 
 ##region Room Information
