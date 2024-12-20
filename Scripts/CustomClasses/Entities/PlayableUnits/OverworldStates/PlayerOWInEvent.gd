@@ -1,12 +1,12 @@
 extends State
-class_name NoEventState
+class_name PlayerOverworldInEvent
 
 
 #region REFERENCES
 #endregion
 
 #region  GLOBAL VARIABLES
-
+var current_room:RegularRoom
 #endregion
 
 #region  CONSTANTS
@@ -25,8 +25,8 @@ class_name NoEventState
 #Called when the node is ready
 func _ready() -> void:
 	pass
-
+	
 func Enter():
-	pass
-
+	current_room = state_owner.current_room
+		
 #endregion

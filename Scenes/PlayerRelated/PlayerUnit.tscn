@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://k47uqnsfqaq"]
+[gd_scene load_steps=26 format=3 uid="uid://k47uqnsfqaq"]
 
 [ext_resource type="Script" path="res://Scripts/CustomClasses/Entities/PlayableUnits/playable_character.gd" id="1_48ics"]
 [ext_resource type="Script" path="res://Scripts/CustomClasses/FiniteStateMachine/finite_state_machine.gd" id="1_d2hjn"]
@@ -8,9 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://cx7nwiyqoipux" path="res://Scenes/MenusAndScreens/InterfaceRelated/HUD.tscn" id="6_o4hwe"]
 [ext_resource type="Script" path="res://Scripts/CustomClasses/Entities/PlayableUnits/OverworldStates/PlayerOWRoomConfirming.gd" id="6_uoaa8"]
 [ext_resource type="Script" path="res://Scripts/CustomClasses/Entities/PlayableUnits/OverworldStates/PlayerOWMoving.gd" id="7_roc5b"]
+[ext_resource type="Script" path="res://Scripts/CustomClasses/Entities/PlayableUnits/OverworldStates/PlayerOWInEvent.gd" id="8_3pn4s"]
 [ext_resource type="Theme" uid="uid://cpa8s36raq0cq" path="res://Assets/ThemeRelated/Version 0.10 theme.tres" id="8_o7p8m"]
 [ext_resource type="Script" path="res://Scripts/CustomClasses/Entities/PlayableUnits/nya_overworld_unit.gd" id="9_0384k"]
 [ext_resource type="Script" path="res://Scripts/CustomClasses/Entities/PlayableUnits/NyaOverworldStates/NyaOverwoldMoving.gd" id="9_ehjjx"]
+[ext_resource type="Texture2D" uid="uid://dfa4fmxvr2bbk" path="res://Assets/Art/EventSprites/Quartz/Quartz.png" id="10_1i7qu"]
 [ext_resource type="Texture2D" uid="uid://b67tmasn01p4b" path="res://Assets/Art/Structures/Door.png" id="11_ikdur"]
 [ext_resource type="FontFile" uid="uid://div2k8alqlsnb" path="res://Assets/Fonts/8bitOperatorPlusSC-Regular.ttf" id="11_mlpo8"]
 [ext_resource type="Texture2D" uid="uid://gx2gxx34kga1" path="res://Assets/Art/NPCs/Nya.png" id="12_nyivi"]
@@ -57,7 +59,7 @@ initial_state = NodePath("Idle")
 script = ExtResource("2_n1253")
 state_owner = NodePath("../..")
 
-[node name="Inmenu" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("state_owner")]
+[node name="InMenu" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("state_owner")]
 script = ExtResource("5_af0au")
 state_owner = NodePath("../..")
 
@@ -71,11 +73,44 @@ state_owner = NodePath("../..")
 script = ExtResource("6_uoaa8")
 nya = NodePath("../../Interface/NyaOverworldUnit")
 
-[node name="Moving" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("state_owner")]
+[node name="Moving" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("Interface", "state_owner")]
 script = ExtResource("7_roc5b")
+Interface = NodePath("../../Interface")
 state_owner = NodePath("../..")
 
+[node name="InEvent" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("8_3pn4s")
+
 [node name="Interface" type="CanvasLayer" parent="."]
+
+[node name="EventPresenter" type="Control" parent="Interface"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 703.0
+offset_bottom = 599.0
+theme = ExtResource("8_o7p8m")
+
+[node name="PanelContainer" type="PanelContainer" parent="Interface/EventPresenter"]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 91.0
+offset_right = 664.0
+offset_bottom = 502.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Interface/EventPresenter/PanelContainer"]
+show_behind_parent = true
+layout_mode = 2
+theme_override_constants/margin_left = 22
+theme_override_constants/margin_top = 35
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 45
+
+[node name="TextureRect" type="TextureRect" parent="Interface/EventPresenter/PanelContainer/MarginContainer"]
+show_behind_parent = true
+layout_mode = 2
+texture = ExtResource("10_1i7qu")
+expand_mode = 2
 
 [node name="NyaOverworldUnit" type="Control" parent="Interface" node_paths=PackedStringArray("NyaSprite", "ActionMenu", "NyaFSM")]
 layout_mode = 3
@@ -91,6 +126,7 @@ ActionMenu = NodePath("ActionMenu")
 NyaFSM = NodePath("NyaFSM")
 
 [node name="RoomSign" type="Panel" parent="Interface/NyaOverworldUnit"]
+visible = false
 layout_mode = 0
 offset_left = 284.0
 offset_top = 192.0
@@ -122,9 +158,9 @@ vertical_alignment = 1
 
 [node name="NyaSprite" type="TextureRect" parent="Interface/NyaOverworldUnit"]
 layout_mode = 0
-offset_left = 44.0
+offset_left = 3.0
 offset_top = 229.0
-offset_right = 164.0
+offset_right = 123.0
 offset_bottom = 349.0
 texture = ExtResource("12_nyivi")
 expand_mode = 1
@@ -141,22 +177,18 @@ offset_bottom = -116.0
 [node name="NyaDialogueBox" type="Panel" parent="Interface/NyaOverworldUnit"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.245714
-anchor_top = 0.318333
-anchor_right = 0.541429
-anchor_bottom = 0.413333
-offset_left = 0.000198364
-offset_top = 96.0002
-offset_right = 0.000213623
-offset_bottom = 96.0002
+anchor_left = 0.275714
+anchor_top = 0.753333
+anchor_right = 0.757143
+anchor_bottom = 0.893333
 metadata/_edit_use_anchors_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="Interface/NyaOverworldUnit/NyaDialogueBox"]
 layout_mode = 0
 offset_left = 20.0
 offset_top = 7.0
-offset_right = 190.0
-offset_bottom = 48.0
+offset_right = 321.0
+offset_bottom = 76.0
 theme_override_constants/margin_bottom = 10
 
 [node name="NyaDialogue" type="Label" parent="Interface/NyaOverworldUnit/NyaDialogueBox/MarginContainer"]
@@ -166,6 +198,7 @@ size_flags_vertical = 1
 text = "Lorem Ipsum"
 label_settings = SubResource("LabelSettings_befc4")
 horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="NyaFSM" type="Node" parent="Interface/NyaOverworldUnit" node_paths=PackedStringArray("initial_state")]

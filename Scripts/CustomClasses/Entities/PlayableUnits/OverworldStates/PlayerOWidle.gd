@@ -32,7 +32,7 @@ func Enter():
 
 func Update(_delta):
 	if Input.is_action_just_pressed("OverworldConfirm"):
-		Nya.NyaFSM.force_change_state("Inmenu")
+		Nya.NyaFSM.force_change_state("InMenu")
 		await DialogueMan2.dialogue_finished
-		state_transition.emit(self, "Inmenu")
+		state_transition.emit(self, "InMenu")
 #endregion

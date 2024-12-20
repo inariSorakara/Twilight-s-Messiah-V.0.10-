@@ -38,7 +38,7 @@ func Update(_delta):
 		Nya.NyaFSM.force_change_state("InMenu")
 		state_owner.rotation_degrees.y = initial_rotation
 		await DialogueMan2.dialogue_finished
-		state_transition.emit(self,"Inmenu")
+		state_transition.emit(self,"InMenu")
 #endregion
 
 	if raycast.is_colliding():

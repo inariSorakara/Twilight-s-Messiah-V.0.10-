@@ -1,17 +1,13 @@
-[gd_scene load_steps=18 format=4 uid="uid://chrncrkuahi4v"]
+[gd_scene load_steps=20 format=4 uid="uid://chrncrkuahi4v"]
 
 [ext_resource type="Script" path="res://Scripts/CustomClasses/Structures/Room/RegularRoom.gd" id="1_v2fcy"]
 [ext_resource type="Resource" uid="uid://hf2n0ivseyp2" path="res://Assets/CustomResources/Structures/Rooms/RegularRoom.tres" id="2_xwsm3"]
 [ext_resource type="Texture2D" uid="uid://d2rlwssjv8l2c" path="res://Assets/Meshes/Structures/Rooms/NoDoorWall_3.png" id="4_o6dm4"]
 [ext_resource type="Texture2D" uid="uid://dkeqpttotbn4x" path="res://Assets/Meshes/Structures/Rooms/textures/112_albedo.png" id="5_sh1w2"]
 [ext_resource type="Texture2D" uid="uid://cwosntklg70w4" path="res://Assets/Meshes/Structures/Rooms/textures/112_albedo2.png" id="6_46cy5"]
+[ext_resource type="Script" path="res://Scripts/CustomClasses/FiniteStateMachine/finite_state_machine.gd" id="7_h5dri"]
+[ext_resource type="Script" path="res://Scripts/CustomClasses/Structures/Room/RoomStates/EventStates/quartz.gd" id="8_agi32"]
 [ext_resource type="Script" path="res://Scripts/CustomClasses/Position3D/position_3d.gd" id="9_85pk4"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_yedrq"]
-size = Vector3(1.08203, 0.981567, 1.11566)
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ipfep"]
-size = Vector2(6, 6)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wk3jp"]
 resource_name = "77"
@@ -130,11 +126,50 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_d2j0u")
 
-[node name="regular_room" type="Node3D" node_paths=PackedStringArray("middle_of_room")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_yedrq"]
+size = Vector3(1.08203, 0.981567, 1.11566)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ipfep"]
+size = Vector2(6, 6)
+
+[node name="regular_room" type="Node3D" node_paths=PackedStringArray("middle_of_room", "event_state_machine")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.66442, -2.98023e-08, 0.521085)
 script = ExtResource("1_v2fcy")
 room_custom_resource = ExtResource("2_xwsm3")
 middle_of_room = NodePath("Position3D")
+event_state_machine = NodePath("EventStateMachine")
+
+[node name="RoomModel" type="Node3D" parent="."]
+
+[node name="NoDoorwall1" type="MeshInstance3D" parent="RoomModel"]
+transform = Transform3D(1.01, 0, 0, 0, 0.906, 0, 0, 0, 0.001, 0.005, 0, 0.077)
+mesh = SubResource("ArrayMesh_24boy")
+skeleton = NodePath("")
+
+[node name="NoDoorwall2" type="MeshInstance3D" parent="RoomModel"]
+transform = Transform3D(-4.41485e-08, 0, 0.001, 0, 0.906, 0, -1.01, 0, -4.37114e-11, -0.5, 0, 0.585)
+mesh = SubResource("ArrayMesh_24boy")
+skeleton = NodePath("")
+
+[node name="NoDoorwall3" type="MeshInstance3D" parent="RoomModel"]
+transform = Transform3D(-4.41485e-08, 0, 0.001, 0, 0.906, 0, -1.01, 0, -4.37114e-11, 0.515, 0, 0.585)
+mesh = SubResource("ArrayMesh_24boy")
+skeleton = NodePath("")
+
+[node name="NoDoorwall4" type="MeshInstance3D" parent="RoomModel"]
+transform = Transform3D(1.01, 0, -1.38778e-17, 0, 0.906, 0, 1.42109e-14, 0, 0.001, 0.000999987, 0, 1.084)
+mesh = SubResource("ArrayMesh_24boy")
+skeleton = NodePath("")
+
+[node name="Floor2" type="MeshInstance3D" parent="RoomModel"]
+transform = Transform3D(1.01721, 0, 0, 0, 3.61525e-07, 0.001, 0, -1.0109, 3.57628e-10, 0.00652164, -0.456298, 0.583564)
+mesh = SubResource("ArrayMesh_7fdq5")
+skeleton = NodePath("")
+
+[node name="Roof2" type="MeshInstance3D" parent="RoomModel"]
+transform = Transform3D(1.03064, 0, 0, 0, 3.64942e-07, 0.001, 0, -1.02045, 3.57628e-10, 0.00999999, 0.45, 0.581)
+mesh = SubResource("ArrayMesh_s61kh")
+skeleton = NodePath("")
 
 [node name="Area3D" type="Area3D" parent="."]
 
@@ -148,37 +183,10 @@ visible = false
 texture = SubResource("PlaceholderTexture2D_ipfep")
 script = ExtResource("9_85pk4")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.4, 0.5)
+[node name="EventStateMachine" type="Node" parent="."]
+script = ExtResource("7_h5dri")
 
-[node name="NoDoorwall1" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.01, 0, 0, 0, 0.906, 0, 0, 0, 0.001, 0.005, 0, 0.077)
-mesh = SubResource("ArrayMesh_24boy")
-skeleton = NodePath("")
-
-[node name="NoDoorwall2" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.41485e-08, 0, 0.001, 0, 0.906, 0, -1.01, 0, -4.37114e-11, -0.5, 0, 0.585)
-mesh = SubResource("ArrayMesh_24boy")
-skeleton = NodePath("")
-
-[node name="NoDoorwall3" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.41485e-08, 0, 0.001, 0, 0.906, 0, -1.01, 0, -4.37114e-11, 0.515, 0, 0.585)
-mesh = SubResource("ArrayMesh_24boy")
-skeleton = NodePath("")
-
-[node name="NoDoorwall4" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.01, 0, -1.38778e-17, 0, 0.906, 0, 1.42109e-14, 0, 0.001, 0.000999987, 0, 1.084)
-mesh = SubResource("ArrayMesh_24boy")
-skeleton = NodePath("")
-
-[node name="Floor2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.01721, 0, 0, 0, 3.61525e-07, 0.001, 0, -1.0109, 3.57628e-10, 0.00652164, -0.456298, 0.583564)
-mesh = SubResource("ArrayMesh_7fdq5")
-skeleton = NodePath("")
-
-[node name="Roof2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.03064, 0, 0, 0, 3.64942e-07, 0.001, 0, -1.02045, 3.57628e-10, 0.00999999, 0.45, 0.581)
-mesh = SubResource("ArrayMesh_s61kh")
-skeleton = NodePath("")
+[node name="Quartz" type="Node" parent="EventStateMachine"]
+script = ExtResource("8_agi32")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

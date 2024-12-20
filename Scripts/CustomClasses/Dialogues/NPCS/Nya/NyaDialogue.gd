@@ -23,4 +23,8 @@ var state_dialogues:Dictionary = {"Idle":{"0": ["Well", "Now what?"],
 
 #Player notifications
 var player_notifications:Dictionary = {"Confirming_Message":{"0": ["Press Confirm or Negate"]}}
+
+#Things Nya says when encountering an event
+var event_dialogues:Dictionary = {"Quartz":{"0": ["We don't have enough memoria yet.", "Let's come back later."],
+"1":["Stairs, here?", "I'm getting an weird feeling from above", "Shall we go on?"]}}
 #endregion
